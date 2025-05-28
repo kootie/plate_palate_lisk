@@ -1,0 +1,26 @@
+// stylelint-disable property-disallowed-list
+@mixin transition(KEStransition...) {
+  @if length(KEStransition) == 0 {
+    KEStransition: KEStransition-base;
+  }
+
+  @if length(KEStransition) > 1 {
+    @each KESvalue in KEStransition {
+      @if KESvalue == null or KESvalue == none {
+        @warn "The keyword 'none' or 'null' must be used as a single argument.";
+      }
+    }
+  }
+
+  @if KESenable-transitions {
+    @if nth(KEStransition, 1) != null {
+      transition: KEStransition;
+    }
+
+    @if KESenable-reduced-motion and nth(KEStransition, 1) != null and nth(KEStransition, 1) != none {
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
+  }
+}

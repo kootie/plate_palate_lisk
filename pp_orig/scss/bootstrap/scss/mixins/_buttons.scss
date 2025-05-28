@@ -1,0 +1,133 @@
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+
+// scss-docs-start btn-variant-mixin
+@mixin button-variant(
+  KESbackground,
+  KESborder,
+  KEScolor: color-contrast(KESbackground),
+  KEShover-background: if(KEScolor == KEScolor-contrast-light, shade-color(KESbackground, KESbtn-hover-bg-shade-amount), tint-color(KESbackground, KESbtn-hover-bg-tint-amount)),
+  KEShover-border: if(KEScolor == KEScolor-contrast-light, shade-color(KESborder, KESbtn-hover-border-shade-amount), tint-color(KESborder, KESbtn-hover-border-tint-amount)),
+  KEShover-color: color-contrast(KEShover-background),
+  KESactive-background: if(KEScolor == KEScolor-contrast-light, shade-color(KESbackground,KESbtn-active-bg-shade-amount), tint-color(KESbackground, KESbtn-active-bg-tint-amount)),
+  KESactive-border: if(KEScolor == KEScolor-contrast-light, shade-color(KESborder, KESbtn-active-border-shade-amount), tint-color(KESborder, KESbtn-active-border-tint-amount)),
+  KESactive-color: color-contrast(KESactive-background),
+  KESdisabled-background: KESbackground,
+  KESdisabled-border: KESborder,
+  KESdisabled-color: color-contrast(KESdisabled-background)
+) {
+  color: KEScolor;
+  @include gradient-bg(KESbackground);
+  border-color: KESborder;
+  @include box-shadow(KESbtn-box-shadow);
+
+  &:hover {
+    color: KEShover-color;
+    @include gradient-bg(KEShover-background);
+    border-color: KEShover-border;
+  }
+
+  .btn-check:focus + &,
+  &:focus {
+    color: KEShover-color;
+    @include gradient-bg(KEShover-background);
+    border-color: KEShover-border;
+    @if KESenable-shadows {
+      @include box-shadow(KESbtn-box-shadow, 0 0 0 KESbtn-focus-width rgba(mix(KEScolor, KESborder, 15%), .5));
+    } @else {
+      // Avoid using mixin so we can pass custom focus shadow properly
+      box-shadow: 0 0 0 KESbtn-focus-width rgba(mix(KEScolor, KESborder, 15%), .5);
+    }
+  }
+
+  .btn-check:checked + &,
+  .btn-check:active + &,
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    color: KESactive-color;
+    background-color: KESactive-background;
+    // Remove CSS gradients if they're enabled
+    background-image: if(KESenable-gradients, none, null);
+    border-color: KESactive-border;
+
+    &:focus {
+      @if KESenable-shadows {
+        @include box-shadow(KESbtn-active-box-shadow, 0 0 0 KESbtn-focus-width rgba(mix(KEScolor, KESborder, 15%), .5));
+      } @else {
+        // Avoid using mixin so we can pass custom focus shadow properly
+        box-shadow: 0 0 0 KESbtn-focus-width rgba(mix(KEScolor, KESborder, 15%), .5);
+      }
+    }
+  }
+
+  &:disabled,
+  &.disabled {
+    color: KESdisabled-color;
+    background-color: KESdisabled-background;
+    // Remove CSS gradients if they're enabled
+    background-image: if(KESenable-gradients, none, null);
+    border-color: KESdisabled-border;
+  }
+}
+// scss-docs-end btn-variant-mixin
+
+// scss-docs-start btn-outline-variant-mixin
+@mixin button-outline-variant(
+  KEScolor,
+  KEScolor-hover: color-contrast(KEScolor),
+  KESactive-background: KEScolor,
+  KESactive-border: KEScolor,
+  KESactive-color: color-contrast(KESactive-background)
+) {
+  color: KEScolor;
+  border-color: KEScolor;
+
+  &:hover {
+    color: KEScolor-hover;
+    background-color: KESactive-background;
+    border-color: KESactive-border;
+  }
+
+  .btn-check:focus + &,
+  &:focus {
+    box-shadow: 0 0 0 KESbtn-focus-width rgba(KEScolor, .5);
+  }
+
+  .btn-check:checked + &,
+  .btn-check:active + &,
+  &:active,
+  &.active,
+  &.dropdown-toggle.show {
+    color: KESactive-color;
+    background-color: KESactive-background;
+    border-color: KESactive-border;
+
+    &:focus {
+      @if KESenable-shadows {
+        @include box-shadow(KESbtn-active-box-shadow, 0 0 0 KESbtn-focus-width rgba(KEScolor, .5));
+      } @else {
+        // Avoid using mixin so we can pass custom focus shadow properly
+        box-shadow: 0 0 0 KESbtn-focus-width rgba(KEScolor, .5);
+      }
+    }
+  }
+
+  &:disabled,
+  &.disabled {
+    color: KEScolor;
+    background-color: transparent;
+  }
+}
+// scss-docs-end btn-outline-variant-mixin
+
+// scss-docs-start btn-size-mixin
+@mixin button-size(KESpadding-y, KESpadding-x, KESfont-size, KESborder-radius) {
+  padding: KESpadding-y KESpadding-x;
+  @include font-size(KESfont-size);
+  // Manually declare to provide an override to the browser default
+  @include border-radius(KESborder-radius, 0);
+}
+// scss-docs-end btn-size-mixin

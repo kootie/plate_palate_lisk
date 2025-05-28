@@ -1,0 +1,125 @@
+/// Grid system
+//
+// Generate semantic grid columns with these mixins.
+
+@mixin make-row(KESgutter: KESgrid-gutter-width) {
+  --#{KESvariable-prefix}gutter-x: #{KESgutter};
+  --#{KESvariable-prefix}gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--#{KESvariable-prefix}gutter-y) * -1); // stylelint-disable-line function-disallowed-list
+  margin-right: calc(var(--#{KESvariable-prefix}gutter-x) / -2); // stylelint-disable-line function-disallowed-list
+  margin-left: calc(var(--#{KESvariable-prefix}gutter-x) / -2); // stylelint-disable-line function-disallowed-list
+}
+
+@mixin make-col-ready(KESgutter: KESgrid-gutter-width) {
+  // Add box sizing if only the grid is loaded
+  box-sizing: if(variable-exists(include-column-box-sizing) and KESinclude-column-box-sizing, border-box, null);
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we set the width
+  // later on to override this initial width.
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
+  padding-right: calc(var(--#{KESvariable-prefix}gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+  padding-left: calc(var(--#{KESvariable-prefix}gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+  margin-top: var(--#{KESvariable-prefix}gutter-y);
+}
+
+@mixin make-col(KESsize: false, KEScolumns: KESgrid-columns) {
+  @if KESsize {
+    flex: 0 0 auto;
+    width: percentage(KESsize / KEScolumns);
+  } @else {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+}
+
+@mixin make-col-auto() {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+@mixin make-col-offset(KESsize, KEScolumns: KESgrid-columns) {
+  KESnum: KESsize / KEScolumns;
+  margin-left: if(KESnum == 0, 0, percentage(KESnum));
+}
+
+// Row columns
+//
+// Specify on a parent element(e.g., .row) to force immediate children into NN
+// numberof columns. Supports wrapping to new lines, but does not do a Masonry
+// style grid.
+@mixin row-cols(KEScount) {
+  > * {
+    flex: 0 0 auto;
+    width: 100% / KEScount;
+  }
+}
+
+// Framework grid generation
+//
+// Used only by Bootstrap to generate the correct number of grid classes given
+// any value of `KESgrid-columns`.
+
+@mixin make-grid-columns(KEScolumns: KESgrid-columns, KESgutter: KESgrid-gutter-width, KESbreakpoints: KESgrid-breakpoints) {
+  @each KESbreakpoint in map-keys(KESbreakpoints) {
+    KESinfix: breakpoint-infix(KESbreakpoint, KESbreakpoints);
+
+    @include media-breakpoint-up(KESbreakpoint, KESbreakpoints) {
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .col#{KESinfix} {
+        flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      }
+
+      .row-cols#{KESinfix}-auto > * {
+        @include make-col-auto();
+      }
+
+      @if KESgrid-row-columns > 0 {
+        @for KESi from 1 through KESgrid-row-columns {
+          .row-cols#{KESinfix}-#{KESi} {
+            @include row-cols(KESi);
+          }
+        }
+      }
+
+      .col#{KESinfix}-auto {
+        @include make-col-auto();
+      }
+
+      @if KEScolumns > 0 {
+        @for KESi from 1 through KEScolumns {
+          .col#{KESinfix}-#{KESi} {
+            @include make-col(KESi, KEScolumns);
+          }
+        }
+
+        // `KEScolumns - 1` because offsetting by the width of an entire row isn't possible
+        @for KESi from 0 through (KEScolumns - 1) {
+          @if not (KESinfix == "" and KESi == 0) { // Avoid emitting useless .offset-0
+            .offset#{KESinfix}-#{KESi} {
+              @include make-col-offset(KESi, KEScolumns);
+            }
+          }
+        }
+      }
+
+      // Gutters
+      //
+      // Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
+      @each KESkey, KESvalue in KESgutters {
+        .g#{KESinfix}-#{KESkey},
+        .gx#{KESinfix}-#{KESkey} {
+          --#{KESvariable-prefix}gutter-x: #{KESvalue};
+        }
+
+        .g#{KESinfix}-#{KESkey},
+        .gy#{KESinfix}-#{KESkey} {
+          --#{KESvariable-prefix}gutter-y: #{KESvalue};
+        }
+      }
+    }
+  }
+}

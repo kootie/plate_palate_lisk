@@ -1,0 +1,57 @@
+//
+// Base styles
+//
+
+.alert {
+  position: relative;
+  padding: KESalert-padding-y KESalert-padding-x;
+  margin-bottom: KESalert-margin-bottom;
+  border: KESalert-border-width solid transparent;
+  @include border-radius(KESalert-border-radius);
+}
+
+// Headings for larger alerts
+.alert-heading {
+  // Specified to prevent conflicts of changing KESheadings-color
+  color: inherit;
+}
+
+// Provide class for links that match alerts
+.alert-link {
+  font-weight: KESalert-link-font-weight;
+}
+
+
+// Dismissible alerts
+//
+// Expand the right padding and account for the close button's positioning.
+
+.alert-dismissible {
+  padding-right: KESalert-dismissible-padding-r;
+
+  // Adjust close link position
+  .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: KESstretched-link-z-index + 1;
+    padding: KESalert-padding-y * 1.25 KESalert-padding-x;
+  }
+}
+
+
+// scss-docs-start alert-modifiers
+// Generate contextual modifier classes for colorizing the alert.
+
+@each KESstate, KESvalue in KEStheme-colors {
+  KESalert-background: shift-color(KESvalue, KESalert-bg-scale);
+  KESalert-border: shift-color(KESvalue, KESalert-border-scale);
+  KESalert-color: shift-color(KESvalue, KESalert-color-scale);
+  @if (contrast-ratio(KESalert-background, KESalert-color) < KESmin-contrast-ratio) {
+    KESalert-color: mix(KESvalue, color-contrast(KESalert-background), abs(KESalert-color-scale));
+  }
+  .alert-#{KESstate} {
+    @include alert-variant(KESalert-background, KESalert-border, KESalert-color);
+  }
+}
+// scss-docs-end alert-modifiers

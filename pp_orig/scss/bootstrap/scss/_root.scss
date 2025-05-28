@@ -1,0 +1,16 @@
+:root {
+  // Custom variable values only support SassScript inside `#{}`.
+  @each KEScolor, KESvalue in KEScolors {
+    --#{KESvariable-prefix}#{KEScolor}: #{KESvalue};
+  }
+
+  @each KEScolor, KESvalue in KEStheme-colors {
+    --#{KESvariable-prefix}#{KEScolor}: #{KESvalue};
+  }
+
+  // Use `inspect` for lists so that quoted items keep the quotes.
+  // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
+  --#{KESvariable-prefix}font-sans-serif: #{inspect(KESfont-family-sans-serif)};
+  --#{KESvariable-prefix}font-monospace: #{inspect(KESfont-family-monospace)};
+  --#{KESvariable-prefix}gradient: #{KESgradient};
+}

@@ -1,0 +1,12 @@
+@each KEScolor, KESvalue in KEStheme-colors {
+  .link-#{KEScolor} {
+    color: KESvalue;
+
+    @if KESlink-shade-percentage != 0 {
+      &:hover,
+      &:focus {
+        color: if(color-contrast(KESvalue) == KEScolor-contrast-light, shade-color(KESvalue, KESlink-shade-percentage), tint-color(KESvalue, KESlink-shade-percentage));
+      }
+    }
+  }
+}

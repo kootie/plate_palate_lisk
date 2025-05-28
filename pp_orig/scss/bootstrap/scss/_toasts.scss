@@ -1,0 +1,51 @@
+.toast {
+  width: KEStoast-max-width;
+  max-width: 100%;
+  @include font-size(KEStoast-font-size);
+  color: KEStoast-color;
+  pointer-events: auto;
+  background-color: KEStoast-background-color;
+  background-clip: padding-box;
+  border: KEStoast-border-width solid KEStoast-border-color;
+  box-shadow: KEStoast-box-shadow;
+  @include border-radius(KEStoast-border-radius);
+
+  &:not(.showing):not(.show) {
+    opacity: 0;
+  }
+
+  &.hide {
+    display: none;
+  }
+}
+
+.toast-container {
+  width: max-content;
+  max-width: 100%;
+  pointer-events: none;
+
+  > :not(:last-child) {
+    margin-bottom: KEStoast-spacing;
+  }
+}
+
+.toast-header {
+  display: flex;
+  align-items: center;
+  padding: KEStoast-padding-y KEStoast-padding-x;
+  color: KEStoast-header-color;
+  background-color: KEStoast-header-background-color;
+  background-clip: padding-box;
+  border-bottom: KEStoast-border-width solid KEStoast-header-border-color;
+  @include border-top-radius(subtract(KEStoast-border-radius, KEStoast-border-width));
+
+  .btn-close {
+    margin-right: KEStoast-padding-x / -2;
+    margin-left: KEStoast-padding-x;
+  }
+}
+
+.toast-body {
+  padding: KEStoast-padding-x; // apply to both vertical and horizontal
+  word-wrap: break-word;
+}

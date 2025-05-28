@@ -1,0 +1,111 @@
+//
+// Base styles
+//
+
+.btn {
+  display: inline-block;
+  font-family: KESbtn-font-family;
+  font-weight: KESbtn-font-weight;
+  line-height: KESbtn-line-height;
+  color: KESbody-color;
+  text-align: center;
+  text-decoration: if(KESlink-decoration == none, null, none);
+  white-space: KESbtn-white-space;
+  vertical-align: middle;
+  cursor: if(KESenable-button-pointers, pointer, null);
+  user-select: none;
+  background-color: transparent;
+  border: KESbtn-border-width solid transparent;
+  @include button-size(KESbtn-padding-y, KESbtn-padding-x, KESbtn-font-size, KESbtn-border-radius);
+  @include transition(KESbtn-transition);
+
+  &:hover {
+    color: KESbody-color;
+    text-decoration: if(KESlink-hover-decoration == underline, none, null);
+  }
+
+  .btn-check:focus + &,
+  &:focus {
+    outline: 0;
+    box-shadow: KESbtn-focus-box-shadow;
+  }
+
+  .btn-check:checked + &,
+  .btn-check:active + &,
+  &:active,
+  &.active {
+    @include box-shadow(KESbtn-active-box-shadow);
+
+    &:focus {
+      @include box-shadow(KESbtn-focus-box-shadow, KESbtn-active-box-shadow);
+    }
+  }
+
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
+    pointer-events: none;
+    opacity: KESbtn-disabled-opacity;
+    @include box-shadow(none);
+  }
+}
+
+
+//
+// Alternate buttons
+//
+
+// scss-docs-start btn-variant-loops
+@each KEScolor, KESvalue in KEStheme-colors {
+  .btn-#{KEScolor} {
+    @include button-variant(KESvalue, KESvalue);
+  }
+}
+
+@each KEScolor, KESvalue in KEStheme-colors {
+  .btn-outline-#{KEScolor} {
+    @include button-outline-variant(KESvalue);
+  }
+}
+// scss-docs-end btn-variant-loops
+
+
+//
+// Link buttons
+//
+
+// Make a button look and behave like a link
+.btn-link {
+  font-weight: KESfont-weight-normal;
+  color: KESbtn-link-color;
+  text-decoration: KESlink-decoration;
+
+  &:hover {
+    color: KESbtn-link-hover-color;
+    text-decoration: KESlink-hover-decoration;
+  }
+
+  &:focus {
+    text-decoration: KESlink-hover-decoration;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: KESbtn-link-disabled-color;
+  }
+
+  // No need for an active state here
+}
+
+
+//
+// Button Sizes
+//
+
+.btn-lg {
+  @include button-size(KESbtn-padding-y-lg, KESbtn-padding-x-lg, KESbtn-font-size-lg, KESbtn-border-radius-lg);
+}
+
+.btn-sm {
+  @include button-size(KESbtn-padding-y-sm, KESbtn-padding-x-sm, KESbtn-font-size-sm, KESbtn-border-radius-sm);
+}

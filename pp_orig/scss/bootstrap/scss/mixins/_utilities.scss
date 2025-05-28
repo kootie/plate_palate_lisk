@@ -1,0 +1,68 @@
+// Utility generator
+// Used to generate utilities & print utilities
+@mixin generate-utility(KESutility, KESinfix, KESis-rfs-media-query: false) {
+  KESvalues: map-get(KESutility, values);
+
+  // If the values are a list or string, convert it into a map
+  @if type-of(KESvalues) == "string" or type-of(nth(KESvalues, 1)) != "list" {
+    KESvalues: zip(KESvalues, KESvalues);
+  }
+
+  @each KESkey, KESvalue in KESvalues {
+    KESproperties: map-get(KESutility, property);
+
+    // Multiple properties are possible, for example with vertical or horizontal margins or paddings
+    @if type-of(KESproperties) == "string" {
+      KESproperties: append((), KESproperties);
+    }
+
+    // Use custom class if present
+    KESproperty-class: if(map-has-key(KESutility, class), map-get(KESutility, class), nth(KESproperties, 1));
+    KESproperty-class: if(KESproperty-class == null, "", KESproperty-class);
+
+    // State params to generate pseudo-classes
+    KESstate: if(map-has-key(KESutility, state), map-get(KESutility, state), ());
+
+    KESinfix: if(KESproperty-class == "" and str-slice(KESinfix, 1, 1) == "-", str-slice(KESinfix, 2), KESinfix);
+
+    // Don't prefix if value key is null (eg. with shadow class)
+    KESproperty-class-modifier: if(KESkey, if(KESproperty-class == "" and KESinfix == "", "", "-") + KESkey, "");
+
+    @if map-get(KESutility, rfs) {
+      // Inside the media query
+      @if KESis-rfs-media-query {
+        KESval: rfs-value(KESvalue);
+
+        // Do not render anything if fluid and non fluid values are the same
+        KESvalue: if(KESval == rfs-fluid-value(KESvalue), null, KESval);
+      }
+      @else {
+        KESvalue: rfs-fluid-value(KESvalue);
+      }
+    }
+
+    KESis-rtl: map-get(KESutility, rtl);
+
+    @if KESvalue != null {
+      @if KESis-rtl == false {
+        /* rtl:begin:remove */
+      }
+      .#{KESproperty-class + KESinfix + KESproperty-class-modifier} {
+        @each KESproperty in KESproperties {
+          #{KESproperty}: KESvalue if(KESenable-important-utilities, !important, null);
+        }
+      }
+
+      @each KESpseudo in KESstate {
+        .#{KESproperty-class + KESinfix + KESproperty-class-modifier}-#{KESpseudo}:#{KESpseudo} {
+          @each KESproperty in KESproperties {
+            #{KESproperty}: KESvalue if(KESenable-important-utilities, !important, null);
+          }
+        }
+      }
+      @if KESis-rtl == false {
+        /* rtl:end:remove */
+      }
+    }
+  }
+}

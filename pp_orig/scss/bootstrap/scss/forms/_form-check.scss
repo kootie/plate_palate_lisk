@@ -1,0 +1,152 @@
+//
+// Check/radio
+//
+
+.form-check {
+  display: block;
+  min-height: KESform-check-min-height;
+  padding-left: KESform-check-padding-start;
+  margin-bottom: KESform-check-margin-bottom;
+
+  .form-check-input {
+    float: left;
+    margin-left: KESform-check-padding-start * -1;
+  }
+}
+
+.form-check-input {
+  width: KESform-check-input-width;
+  height: KESform-check-input-width;
+  margin-top: (KESline-height-base - KESform-check-input-width) / 2; // line-height minus check height
+  vertical-align: top;
+  background-color: KESform-check-input-bg;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: KESform-check-input-border;
+  appearance: none;
+  color-adjust: exact; // Keep themed appearance for print
+  @include transition(KESform-check-transition);
+
+  &[type="checkbox"] {
+    @include border-radius(KESform-check-input-border-radius);
+  }
+
+  &[type="radio"] {
+    // stylelint-disable-next-line property-disallowed-list
+    border-radius: KESform-check-radio-border-radius;
+  }
+
+  &:active {
+    filter: KESform-check-input-active-filter;
+  }
+
+  &:focus {
+    border-color: KESform-check-input-focus-border;
+    outline: 0;
+    box-shadow: KESform-check-input-focus-box-shadow;
+  }
+
+  &:checked {
+    background-color: KESform-check-input-checked-bg-color;
+    border-color: KESform-check-input-checked-border-color;
+
+    &[type="checkbox"] {
+      @if KESenable-gradients {
+        background-image: escape-svg(KESform-check-input-checked-bg-image), var(--#{KESvariable-prefix}gradient);
+      } @else {
+        background-image: escape-svg(KESform-check-input-checked-bg-image);
+      }
+    }
+
+    &[type="radio"] {
+      @if KESenable-gradients {
+        background-image: escape-svg(KESform-check-radio-checked-bg-image), var(--#{KESvariable-prefix}gradient);
+      } @else {
+        background-image: escape-svg(KESform-check-radio-checked-bg-image);
+      }
+    }
+  }
+
+  &[type="checkbox"]:indeterminate {
+    background-color: KESform-check-input-indeterminate-bg-color;
+    border-color: KESform-check-input-indeterminate-border-color;
+
+    @if KESenable-gradients {
+      background-image: escape-svg(KESform-check-input-indeterminate-bg-image), var(--#{KESvariable-prefix}gradient);
+    } @else {
+      background-image: escape-svg(KESform-check-input-indeterminate-bg-image);
+    }
+  }
+
+  &:disabled {
+    pointer-events: none;
+    filter: none;
+    opacity: KESform-check-input-disabled-opacity;
+  }
+
+  // Use disabled attribute in addition of :disabled pseudo-class
+  // See: https://github.com/twbs/bootstrap/issues/28247
+  &[disabled],
+  &:disabled {
+    ~ .form-check-label {
+      opacity: KESform-check-label-disabled-opacity;
+    }
+  }
+}
+
+.form-check-label {
+  color: KESform-check-label-color;
+  cursor: KESform-check-label-cursor;
+}
+
+//
+// Switch
+//
+
+.form-switch {
+  padding-left: KESform-switch-padding-start;
+
+  .form-check-input {
+    width: KESform-switch-width;
+    margin-left: KESform-switch-padding-start * -1;
+    background-image: escape-svg(KESform-switch-bg-image);
+    background-position: left center;
+    @include border-radius(KESform-switch-border-radius);
+    @include transition(KESform-switch-transition);
+
+    &:focus {
+      background-image: escape-svg(KESform-switch-focus-bg-image);
+    }
+
+    &:checked {
+      background-position: KESform-switch-checked-bg-position;
+
+      @if KESenable-gradients {
+        background-image: escape-svg(KESform-switch-checked-bg-image), var(--#{KESvariable-prefix}gradient);
+      } @else {
+        background-image: escape-svg(KESform-switch-checked-bg-image);
+      }
+    }
+  }
+}
+
+.form-check-inline {
+  display: inline-block;
+  margin-right: KESform-check-inline-margin-end;
+}
+
+.btn-check {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+
+  &[disabled],
+  &:disabled {
+    + .btn {
+      pointer-events: none;
+      filter: none;
+      opacity: KESform-check-btn-check-disabled-opacity;
+    }
+  }
+}

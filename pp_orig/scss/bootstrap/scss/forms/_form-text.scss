@@ -1,0 +1,11 @@
+//
+// Form text
+//
+
+.form-text {
+  margin-top: KESform-text-margin-top;
+  @include font-size(KESform-text-font-size);
+  font-style: KESform-text-font-style;
+  font-weight: KESform-text-font-weight;
+  color: KESform-text-color;
+}

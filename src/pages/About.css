@@ -1,0 +1,39 @@
+.about-page {
+  background-color: var(--white);
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.about-content {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.about-content h1 {
+  color: var(--text-color);
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.about-content h3 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.about-content p {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.about-content .lead {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+} 

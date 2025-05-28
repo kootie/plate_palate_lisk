@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+  --font-family: 'Poppins', sans-serif;
+
+  --gradient2: linear-gradient(89.97deg, #EB1484 1.84%, #c81cc5 102.67%);
+  --primary-btn: linear-gradient(101.12deg, #EB1484 27.35%, #C91CC3 99.99%, #C81CC5 100%, #C81CC5 100%);
+  
+  --primary-color: #d4a762;
+  --primary-dark: #b38d4f;
+  --primary-light: #e6c48a;
+  --secondary-color: #2c3e50;
+  --accent-color: #d4a762;
+  --text-color: #333;
+  --light-bg: #f8f9fa;
+  --white: #ffffff;
+
+  --color-bg: #24252d;
+  --color-card : #2A2D3A;
+  --color-footer : #24252D;
+}
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #2A2D3A #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--color-card);
+    border-radius: 10px;
+    border: 3px none #ffffff;
+  }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
+  background-color: var(--white);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.py-6 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.gap-3 {
+  gap: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.navbar {
+  background-color: var(--white) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+  color: var(--primary-color) !important;
+}
+
+.nav-link {
+  color: var(--text-color) !important;
+}
+
+.nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+.nav-link.active {
+  color: var(--primary-color) !important;
+  font-weight: 600;
+}
+
+.card {
+  background-color: var(--white);
+  border: 1px solid rgba(212, 167, 98, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  color: var(--primary-color);
+}
+
+.footer {
+  background-color: var(--white);
+  color: var(--text-color);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 2rem 0;
+}
+
+.footer a {
+  color: var(--primary-color);
+}
+
+.footer a:hover {
+  color: var(--primary-dark);
+}
+
+/* Form styles */
+.form-control {
+  background-color: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(212, 167, 98, 0.25);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Page containers */
+.container {
+  background-color: var(--white);
+}
+
+/* Text colors */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+}
+
+p, span, div {
+  color: var(--text-color);
+}

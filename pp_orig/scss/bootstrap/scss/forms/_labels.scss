@@ -1,0 +1,36 @@
+//
+// Labels
+//
+
+.form-label {
+  margin-bottom: KESform-label-margin-bottom;
+  @include font-size(KESform-label-font-size);
+  font-style: KESform-label-font-style;
+  font-weight: KESform-label-font-weight;
+  color: KESform-label-color;
+}
+
+// For use with horizontal and inline forms, when you need the label (or legend)
+// text to align with the form controls.
+.col-form-label {
+  padding-top: add(KESinput-padding-y, KESinput-border-width);
+  padding-bottom: add(KESinput-padding-y, KESinput-border-width);
+  margin-bottom: 0; // Override the `<legend>` default
+  @include font-size(inherit); // Override the `<legend>` default
+  font-style: KESform-label-font-style;
+  font-weight: KESform-label-font-weight;
+  line-height: KESinput-line-height;
+  color: KESform-label-color;
+}
+
+.col-form-label-lg {
+  padding-top: add(KESinput-padding-y-lg, KESinput-border-width);
+  padding-bottom: add(KESinput-padding-y-lg, KESinput-border-width);
+  @include font-size(KESinput-font-size-lg);
+}
+
+.col-form-label-sm {
+  padding-top: add(KESinput-padding-y-sm, KESinput-border-width);
+  padding-bottom: add(KESinput-padding-y-sm, KESinput-border-width);
+  @include font-size(KESinput-font-size-sm);
+}

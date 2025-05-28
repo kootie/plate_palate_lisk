@@ -1,0 +1,21 @@
+// scss-docs-start table-variant
+@mixin table-variant(KESstate, KESbackground) {
+  .table-#{KESstate} {
+    KEScolor: color-contrast(opaque(KESbody-bg, KESbackground));
+    KEShover-bg: mix(KEScolor, KESbackground, percentage(KEStable-hover-bg-factor));
+    KESstriped-bg: mix(KEScolor, KESbackground, percentage(KEStable-striped-bg-factor));
+    KESactive-bg: mix(KEScolor, KESbackground, percentage(KEStable-active-bg-factor));
+
+    --#{KESvariable-prefix}table-bg: #{KESbackground};
+    --#{KESvariable-prefix}table-striped-bg: #{KESstriped-bg};
+    --#{KESvariable-prefix}table-striped-color: #{color-contrast(KESstriped-bg)};
+    --#{KESvariable-prefix}table-active-bg: #{KESactive-bg};
+    --#{KESvariable-prefix}table-active-color: #{color-contrast(KESactive-bg)};
+    --#{KESvariable-prefix}table-hover-bg: #{KEShover-bg};
+    --#{KESvariable-prefix}table-hover-color: #{color-contrast(KEShover-bg)};
+
+    color: KEScolor;
+    border-color: mix(KEScolor, KESbackground, percentage(KEStable-border-factor));
+  }
+}
+// scss-docs-end table-variant

@@ -1,0 +1,67 @@
+// Select
+//
+// Replaces the browser default select with a custom one, mostly pulled from
+// https://primer.github.io/.
+
+.form-select {
+  display: block;
+  width: 100%;
+  padding: KESform-select-padding-y KESform-select-indicator-padding KESform-select-padding-y KESform-select-padding-x;
+  font-family: KESform-select-font-family;
+  @include font-size(KESform-select-font-size);
+  font-weight: KESform-select-font-weight;
+  line-height: KESform-select-line-height;
+  color: KESform-select-color;
+  background-color: KESform-select-bg;
+  background-image: escape-svg(KESform-select-indicator);
+  background-repeat: no-repeat;
+  background-position: KESform-select-bg-position;
+  background-size: KESform-select-bg-size;
+  border: KESform-select-border-width solid KESform-select-border-color;
+  @include border-radius(KESform-select-border-radius, 0);
+  @include box-shadow(KESform-select-box-shadow);
+  appearance: none;
+
+  &:focus {
+    border-color: KESform-select-focus-border-color;
+    outline: 0;
+    @if KESenable-shadows {
+      @include box-shadow(KESform-select-box-shadow, KESform-select-focus-box-shadow);
+    } @else {
+      // Avoid using mixin so we can pass custom focus shadow properly
+      box-shadow: KESform-select-focus-box-shadow;
+    }
+  }
+
+  &[multiple],
+  &[size]:not([size="1"]) {
+    padding-right: KESform-select-padding-x;
+    background-image: none;
+  }
+
+  &:disabled {
+    color: KESform-select-disabled-color;
+    background-color: KESform-select-disabled-bg;
+    border-color: KESform-select-disabled-border-color;
+  }
+
+  // Remove outline from select box in FF
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 KESform-select-color;
+  }
+}
+
+.form-select-sm {
+  padding-top: KESform-select-padding-y-sm;
+  padding-bottom: KESform-select-padding-y-sm;
+  padding-left: KESform-select-padding-x-sm;
+  @include font-size(KESform-select-font-size-sm);
+}
+
+.form-select-lg {
+  padding-top: KESform-select-padding-y-lg;
+  padding-bottom: KESform-select-padding-y-lg;
+  padding-left: KESform-select-padding-x-lg;
+  @include font-size(KESform-select-font-size-lg);
+}

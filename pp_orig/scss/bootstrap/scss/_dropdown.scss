@@ -1,0 +1,240 @@
+// The dropdown wrapper (`<div>`)
+.dropup,
+.dropend,
+.dropdown,
+.dropstart {
+  position: relative;
+}
+
+.dropdown-toggle {
+  white-space: nowrap;
+
+  // Generate the caret automatically
+  @include caret();
+}
+
+// The dropdown menu
+.dropdown-menu {
+  position: absolute;
+  z-index: KESzindex-dropdown;
+  display: none; // none by default, but block on "open" of the menu
+  min-width: KESdropdown-min-width;
+  padding: KESdropdown-padding-y KESdropdown-padding-x;
+  margin: 0; // Override default margin of ul
+  @include font-size(KESdropdown-font-size);
+  color: KESdropdown-color;
+  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  list-style: none;
+  background-color: KESdropdown-bg;
+  background-clip: padding-box;
+  border: KESdropdown-border-width solid KESdropdown-border-color;
+  @include border-radius(KESdropdown-border-radius);
+  @include box-shadow(KESdropdown-box-shadow);
+
+  &[data-bs-popper] {
+    top: 100%;
+    left: 0;
+    margin-top: KESdropdown-spacer;
+  }
+}
+
+// scss-docs-start responsive-breakpoints
+// We deliberately hardcode the `bs-` prefix because we check
+// this custom property in JS to determine Popper's positioning
+
+@each KESbreakpoint in map-keys(KESgrid-breakpoints) {
+  @include media-breakpoint-up(KESbreakpoint) {
+    KESinfix: breakpoint-infix(KESbreakpoint, KESgrid-breakpoints);
+
+    .dropdown-menu#{KESinfix}-start {
+      --bs-position: start;
+
+      &[data-bs-popper] {
+        right: auto #{"/* rtl:ignore */"};
+        left: 0 #{"/* rtl:ignore */"};
+      }
+    }
+
+    .dropdown-menu#{KESinfix}-end {
+      --bs-position: end;
+
+      &[data-bs-popper] {
+        right: 0 #{"/* rtl:ignore */"};
+        left: auto #{"/* rtl:ignore */"};
+      }
+    }
+  }
+}
+// scss-docs-end responsive-breakpoints
+
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+// Just add .dropup after the standard .dropdown class and you're set.
+.dropup {
+  .dropdown-menu[data-bs-popper] {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: KESdropdown-spacer;
+  }
+
+  .dropdown-toggle {
+    @include caret(up);
+  }
+}
+
+.dropend {
+  .dropdown-menu[data-bs-popper] {
+    top: 0;
+    right: auto;
+    left: 100%;
+    margin-top: 0;
+    margin-left: KESdropdown-spacer;
+  }
+
+  .dropdown-toggle {
+    @include caret(end);
+    &::after {
+      vertical-align: 0;
+    }
+  }
+}
+
+.dropstart {
+  .dropdown-menu[data-bs-popper] {
+    top: 0;
+    right: 100%;
+    left: auto;
+    margin-top: 0;
+    margin-right: KESdropdown-spacer;
+  }
+
+  .dropdown-toggle {
+    @include caret(start);
+    &::before {
+      vertical-align: 0;
+    }
+  }
+}
+
+
+// Dividers (basically an `<hr>`) within the dropdown
+.dropdown-divider {
+  height: 0;
+  margin: KESdropdown-divider-margin-y 0;
+  overflow: hidden;
+  border-top: 1px solid KESdropdown-divider-bg;
+}
+
+// Links, buttons, and more within the dropdown menu
+//
+// `<button>`-specific styles are denoted with `// For <button>s`
+.dropdown-item {
+  display: block;
+  width: 100%; // For `<button>`s
+  padding: KESdropdown-item-padding-y KESdropdown-item-padding-x;
+  clear: both;
+  font-weight: KESfont-weight-normal;
+  color: KESdropdown-link-color;
+  text-align: inherit; // For `<button>`s
+  text-decoration: if(KESlink-decoration == none, null, none);
+  white-space: nowrap; // prevent links from randomly breaking onto new lines
+  background-color: transparent; // For `<button>`s
+  border: 0; // For `<button>`s
+
+  // Prevent dropdown overflow if there's no padding
+  // See https://github.com/twbs/bootstrap/pull/27703
+  @if KESdropdown-padding-y == 0 {
+    &:first-child {
+      @include border-top-radius(KESdropdown-inner-border-radius);
+    }
+
+    &:last-child {
+      @include border-bottom-radius(KESdropdown-inner-border-radius);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: KESdropdown-link-hover-color;
+    text-decoration: if(KESlink-hover-decoration == underline, none, null);
+    @include gradient-bg(KESdropdown-link-hover-bg);
+  }
+
+  &.active,
+  &:active {
+    color: KESdropdown-link-active-color;
+    text-decoration: none;
+    @include gradient-bg(KESdropdown-link-active-bg);
+  }
+
+  &.disabled,
+  &:disabled {
+    color: KESdropdown-link-disabled-color;
+    pointer-events: none;
+    background-color: transparent;
+    // Remove CSS gradients if they're enabled
+    background-image: if(KESenable-gradients, none, null);
+  }
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+// Dropdown section headers
+.dropdown-header {
+  display: block;
+  padding: KESdropdown-header-padding;
+  margin-bottom: 0; // for use with heading elements
+  @include font-size(KESfont-size-sm);
+  color: KESdropdown-header-color;
+  white-space: nowrap; // as with > li > a
+}
+
+// Dropdown text
+.dropdown-item-text {
+  display: block;
+  padding: KESdropdown-item-padding-y KESdropdown-item-padding-x;
+  color: KESdropdown-link-color;
+}
+
+// Dark dropdowns
+.dropdown-menu-dark {
+  color: KESdropdown-dark-color;
+  background-color: KESdropdown-dark-bg;
+  border-color: KESdropdown-dark-border-color;
+  @include box-shadow(KESdropdown-dark-box-shadow);
+
+  .dropdown-item {
+    color: KESdropdown-dark-link-color;
+
+    &:hover,
+    &:focus {
+      color: KESdropdown-dark-link-hover-color;
+      @include gradient-bg(KESdropdown-dark-link-hover-bg);
+    }
+
+    &.active,
+    &:active {
+      color: KESdropdown-dark-link-active-color;
+      @include gradient-bg(KESdropdown-dark-link-active-bg);
+    }
+
+    &.disabled,
+    &:disabled {
+      color: KESdropdown-dark-link-disabled-color;
+    }
+  }
+
+  .dropdown-divider {
+    border-color: KESdropdown-dark-divider-bg;
+  }
+
+  .dropdown-item-text {
+    color: KESdropdown-dark-link-color;
+  }
+
+  .dropdown-header {
+    color: KESdropdown-dark-header-color;
+  }
+}

@@ -1,0 +1,78 @@
+// stylelint-disable property-disallowed-list
+// Single side border-radius
+
+// Helper function to replace negative values with 0
+@function valid-radius(KESradius) {
+  KESreturn: ();
+  @each KESvalue in KESradius {
+    @if type-of(KESvalue) == number {
+      KESreturn: append(KESreturn, max(KESvalue, 0));
+    } @else {
+      KESreturn: append(KESreturn, KESvalue);
+    }
+  }
+  @return KESreturn;
+}
+
+// scss-docs-start border-radius-mixins
+@mixin border-radius(KESradius: KESborder-radius, KESfallback-border-radius: false) {
+  @if KESenable-rounded {
+    border-radius: valid-radius(KESradius);
+  }
+  @else if KESfallback-border-radius != false {
+    border-radius: KESfallback-border-radius;
+  }
+}
+
+@mixin border-top-radius(KESradius: KESborder-radius) {
+  @if KESenable-rounded {
+    border-top-left-radius: valid-radius(KESradius);
+    border-top-right-radius: valid-radius(KESradius);
+  }
+}
+
+@mixin border-end-radius(KESradius: KESborder-radius) {
+  @if KESenable-rounded {
+    border-top-right-radius: valid-radius(KESradius);
+    border-bottom-right-radius: valid-radius(KESradius);
+  }
+}
+
+@mixin border-bottom-radius(KESradius: KESborder-radius) {
+  @if KESenable-rounded {
+    border-bottom-right-radius: valid-radius(KESradius);
+    border-bottom-left-radius: valid-radius(KESradius);
+  }
+}
+
+@mixin border-start-radius(KESradius: KESborder-radius) {
+  @if KESenable-rounded {
+    border-top-left-radius: valid-radius(KESradius);
+    border-bottom-left-radius: valid-radius(KESradius);
+  }
+}
+
+@mixin border-top-start-radius(KESradius: KESborder-radius) {
+  @if KESenable-rounded {
+    border-top-left-radius: valid-radius(KESradius);
+  }
+}
+
+@mixin border-top-end-radius(KESradius: KESborder-radius) {
+  @if KESenable-rounded {
+    border-top-right-radius: valid-radius(KESradius);
+  }
+}
+
+@mixin border-bottom-end-radius(KESradius: KESborder-radius) {
+  @if KESenable-rounded {
+    border-bottom-right-radius: valid-radius(KESradius);
+  }
+}
+
+@mixin border-bottom-start-radius(KESradius: KESborder-radius) {
+  @if KESenable-rounded {
+    border-bottom-left-radius: valid-radius(KESradius);
+  }
+}
+// scss-docs-end border-radius-mixins

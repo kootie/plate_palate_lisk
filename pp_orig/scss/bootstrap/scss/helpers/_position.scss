@@ -1,0 +1,30 @@
+// Shorthand
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: KESzindex-fixed;
+}
+
+.fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: KESzindex-fixed;
+}
+
+// Responsive sticky top
+@each KESbreakpoint in map-keys(KESgrid-breakpoints) {
+  @include media-breakpoint-up(KESbreakpoint) {
+    KESinfix: breakpoint-infix(KESbreakpoint, KESgrid-breakpoints);
+
+    .sticky#{KESinfix}-top {
+      position: sticky;
+      top: 0;
+      z-index: KESzindex-sticky;
+    }
+  }
+}

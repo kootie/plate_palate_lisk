@@ -1,0 +1,48 @@
+// Disable animation if transitions are disabled
+
+// scss-docs-start progress-keyframes
+@if KESenable-transitions {
+  @keyframes progress-bar-stripes {
+    0% { background-position-x: KESprogress-height; }
+  }
+}
+// scss-docs-end progress-keyframes
+
+.progress {
+  display: flex;
+  height: KESprogress-height;
+  overflow: hidden; // force rounded corners by cropping it
+  @include font-size(KESprogress-font-size);
+  background-color: KESprogress-bg;
+  @include border-radius(KESprogress-border-radius);
+  @include box-shadow(KESprogress-box-shadow);
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: KESprogress-bar-color;
+  text-align: center;
+  white-space: nowrap;
+  background-color: KESprogress-bar-bg;
+  @include transition(KESprogress-bar-transition);
+}
+
+.progress-bar-striped {
+  @include gradient-striped();
+  background-size: KESprogress-height KESprogress-height;
+}
+
+@if KESenable-transitions {
+  .progress-bar-animated {
+    animation: KESprogress-bar-animation-timing progress-bar-stripes;
+
+    @if KESenable-reduced-motion {
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+    }
+  }
+}

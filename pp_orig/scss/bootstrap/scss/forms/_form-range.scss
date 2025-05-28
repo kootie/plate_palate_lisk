@@ -1,0 +1,91 @@
+// Range
+//
+// Style range inputs the same across browsers. Vendor-specific rules for pseudo
+// elements cannot be mixed. As such, there are no shared styles for focus or
+// active states on prefixed selectors.
+
+.form-range {
+  width: 100%;
+  height: add(KESform-range-thumb-height, KESform-range-thumb-focus-box-shadow-width * 2);
+  padding: 0; // Need to reset padding
+  background-color: transparent;
+  appearance: none;
+
+  &:focus {
+    outline: 0;
+
+    // Pseudo-elements must be split across multiple rulesets to have an effect.
+    // No box-shadow() mixin for focus accessibility.
+    &::-webkit-slider-thumb { box-shadow: KESform-range-thumb-focus-box-shadow; }
+    &::-moz-range-thumb     { box-shadow: KESform-range-thumb-focus-box-shadow; }
+  }
+
+  &::-moz-focus-outer {
+    border: 0;
+  }
+
+  &::-webkit-slider-thumb {
+    width: KESform-range-thumb-width;
+    height: KESform-range-thumb-height;
+    margin-top: (KESform-range-track-height - KESform-range-thumb-height) / 2; // Webkit specific
+    @include gradient-bg(KESform-range-thumb-bg);
+    border: KESform-range-thumb-border;
+    @include border-radius(KESform-range-thumb-border-radius);
+    @include box-shadow(KESform-range-thumb-box-shadow);
+    @include transition(KESform-range-thumb-transition);
+    appearance: none;
+
+    &:active {
+      @include gradient-bg(KESform-range-thumb-active-bg);
+    }
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: KESform-range-track-width;
+    height: KESform-range-track-height;
+    color: transparent; // Why?
+    cursor: KESform-range-track-cursor;
+    background-color: KESform-range-track-bg;
+    border-color: transparent;
+    @include border-radius(KESform-range-track-border-radius);
+    @include box-shadow(KESform-range-track-box-shadow);
+  }
+
+  &::-moz-range-thumb {
+    width: KESform-range-thumb-width;
+    height: KESform-range-thumb-height;
+    @include gradient-bg(KESform-range-thumb-bg);
+    border: KESform-range-thumb-border;
+    @include border-radius(KESform-range-thumb-border-radius);
+    @include box-shadow(KESform-range-thumb-box-shadow);
+    @include transition(KESform-range-thumb-transition);
+    appearance: none;
+
+    &:active {
+      @include gradient-bg(KESform-range-thumb-active-bg);
+    }
+  }
+
+  &::-moz-range-track {
+    width: KESform-range-track-width;
+    height: KESform-range-track-height;
+    color: transparent;
+    cursor: KESform-range-track-cursor;
+    background-color: KESform-range-track-bg;
+    border-color: transparent; // Firefox specific?
+    @include border-radius(KESform-range-track-border-radius);
+    @include box-shadow(KESform-range-track-box-shadow);
+  }
+
+  &:disabled {
+    pointer-events: none;
+
+    &::-webkit-slider-thumb {
+      background-color: KESform-range-thumb-disabled-bg;
+    }
+
+    &::-moz-range-thumb {
+      background-color: KESform-range-thumb-disabled-bg;
+    }
+  }
+}

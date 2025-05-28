@@ -1,0 +1,137 @@
+// This mixin uses an `if()` technique to be compatible with Dart Sass
+// See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
+
+// scss-docs-start form-validation-mixins
+@mixin form-validation-state-selector(KESstate) {
+  @if (KESstate == "valid" or KESstate == "invalid") {
+    .was-validated #{if(&, "&", "")}:#{KESstate},
+    #{if(&, "&", "")}.is-#{KESstate} {
+      @content;
+    }
+  } @else {
+    #{if(&, "&", "")}.is-#{KESstate} {
+      @content;
+    }
+  }
+}
+
+@mixin form-validation-state(
+  KESstate,
+  KEScolor,
+  KESicon,
+  KEStooltip-color: color-contrast(KEScolor),
+  KEStooltip-bg-color: rgba(KEScolor, KESform-feedback-tooltip-opacity),
+  KESfocus-box-shadow: 0 0 KESinput-btn-focus-blur KESinput-focus-width rgba(KEScolor, KESinput-btn-focus-color-opacity)
+) {
+  .#{KESstate}-feedback {
+    display: none;
+    width: 100%;
+    margin-top: KESform-feedback-margin-top;
+    @include font-size(KESform-feedback-font-size);
+    font-style: KESform-feedback-font-style;
+    color: KEScolor;
+  }
+
+  .#{KESstate}-tooltip {
+    position: absolute;
+    top: 100%;
+    z-index: 5;
+    display: none;
+    max-width: 100%; // Contain to parent when possible
+    padding: KESform-feedback-tooltip-padding-y KESform-feedback-tooltip-padding-x;
+    margin-top: .1rem;
+    @include font-size(KESform-feedback-tooltip-font-size);
+    line-height: KESform-feedback-tooltip-line-height;
+    color: KEStooltip-color;
+    background-color: KEStooltip-bg-color;
+    @include border-radius(KESform-feedback-tooltip-border-radius);
+  }
+
+  @include form-validation-state-selector(KESstate) {
+    ~ .#{KESstate}-feedback,
+    ~ .#{KESstate}-tooltip {
+      display: block;
+    }
+  }
+
+  .form-control {
+    @include form-validation-state-selector(KESstate) {
+      border-color: KEScolor;
+
+      @if KESenable-validation-icons {
+        padding-right: KESinput-height-inner;
+        background-image: escape-svg(KESicon);
+        background-repeat: no-repeat;
+        background-position: right KESinput-height-inner-quarter center;
+        background-size: KESinput-height-inner-half KESinput-height-inner-half;
+      }
+
+      &:focus {
+        border-color: KEScolor;
+        box-shadow: KESfocus-box-shadow;
+      }
+    }
+  }
+
+  // stylelint-disable-next-line selector-no-qualifying-type
+  textarea.form-control {
+    @include form-validation-state-selector(KESstate) {
+      @if KESenable-validation-icons {
+        padding-right: KESinput-height-inner;
+        background-position: top KESinput-height-inner-quarter right KESinput-height-inner-quarter;
+      }
+    }
+  }
+
+  .form-select {
+    @include form-validation-state-selector(KESstate) {
+      border-color: KEScolor;
+
+      @if KESenable-validation-icons {
+        &:not([multiple]):not([size]),
+        &:not([multiple])[size="1"] {
+          padding-right: KESform-select-feedback-icon-padding-end;
+          background-image: escape-svg(KESform-select-indicator), escape-svg(KESicon);
+          background-position: KESform-select-bg-position, KESform-select-feedback-icon-position;
+          background-size: KESform-select-bg-size, KESform-select-feedback-icon-size;
+        }
+      }
+
+      &:focus {
+        border-color: KEScolor;
+        box-shadow: KESfocus-box-shadow;
+      }
+    }
+  }
+
+  .form-check-input {
+    @include form-validation-state-selector(KESstate) {
+      border-color: KEScolor;
+
+      &:checked {
+        background-color: KEScolor;
+      }
+
+      &:focus {
+        box-shadow: KESfocus-box-shadow;
+      }
+
+      ~ .form-check-label {
+        color: KEScolor;
+      }
+    }
+  }
+  .form-check-inline .form-check-input {
+    ~ .#{KESstate}-feedback {
+      margin-left: .5em;
+    }
+  }
+
+  .input-group .form-control,
+  .input-group .form-select {
+    @include form-validation-state-selector(KESstate) {
+      z-index: 3;
+    }
+  }
+}
+// scss-docs-end form-validation-mixins

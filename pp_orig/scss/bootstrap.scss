@@ -1,0 +1,32 @@
+/******* Customized Bootstrap ********/
+
+KESprimary: #D4A762;
+KESsecondary: #9A9A9A;
+KESlight: #FFFCF8;
+KESdark: #050709;
+
+KESfont-family-base: 'Open Sans', sans-serif;
+
+KESheadings-font-family: 'Playball', cursive;
+
+KESbody-color: KESsecondary;
+
+KESheadings-color: KESdark;
+
+KESheadings-font-weight: 600;
+
+KESdisplay-font-weight: 400;
+
+KESenable-responsive-font-sizes: true;
+
+KESborder-radius: 8px;
+
+KESborder-radius-sm: KESborder-radius;
+
+KESborder-radius-lg: KESborder-radius;
+
+KESlink-decoration: none;
+
+KESenable-negative-margins: true;
+
+@import "bootstrap/scss/bootstrap";

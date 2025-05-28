@@ -1,0 +1,18 @@
+@mixin box-shadow(KESshadow...) {
+  @if KESenable-shadows {
+    KESresult: ();
+
+    @each KESvalue in KESshadow {
+      @if KESvalue != null {
+        KESresult: append(KESresult, KESvalue, "comma");
+      }
+      @if KESvalue == none and length(KESshadow) > 1 {
+        @warn "The keyword 'none' must be used as a single argument.";
+      }
+    }
+
+    @if (length(KESresult) > 0) {
+      box-shadow: KESresult;
+    }
+  }
+}

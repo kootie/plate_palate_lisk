@@ -1,0 +1,77 @@
+.offcanvas {
+  position: fixed;
+  bottom: 0;
+  z-index: KESzindex-offcanvas;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  color: KESoffcanvas-color;
+  visibility: hidden;
+  background-color: KESoffcanvas-bg-color;
+  background-clip: padding-box;
+  outline: 0;
+  @include box-shadow(KESoffcanvas-box-shadow);
+  @include transition(transform KESoffcanvas-transition-duration ease-in-out);
+}
+
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: KESoffcanvas-padding-y KESoffcanvas-padding-x;
+
+  .btn-close {
+    padding: (KESoffcanvas-padding-y / 2) (KESoffcanvas-padding-x / 2);
+    margin: (KESoffcanvas-padding-y / -2) (KESoffcanvas-padding-x / -2) (KESoffcanvas-padding-y / -2) auto;
+  }
+}
+
+.offcanvas-title {
+  margin-bottom: 0;
+  line-height: KESoffcanvas-title-line-height;
+}
+
+.offcanvas-body {
+  flex-grow: 1;
+  padding: KESoffcanvas-padding-y KESoffcanvas-padding-x;
+  overflow-y: auto;
+}
+
+.offcanvas-start {
+  top: 0;
+  left: 0;
+  width: KESoffcanvas-horizontal-width;
+  border-right: KESoffcanvas-border-width solid KESoffcanvas-border-color;
+  transform: translateX(-100%);
+}
+
+.offcanvas-end {
+  top: 0;
+  right: 0;
+  width: KESoffcanvas-horizontal-width;
+  border-left: KESoffcanvas-border-width solid KESoffcanvas-border-color;
+  transform: translateX(100%);
+}
+
+.offcanvas-top {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: KESoffcanvas-vertical-height;
+  max-height: 100%;
+  border-bottom: KESoffcanvas-border-width solid KESoffcanvas-border-color;
+  transform: translateY(-100%);
+}
+
+.offcanvas-bottom {
+  right: 0;
+  left: 0;
+  height: KESoffcanvas-vertical-height;
+  max-height: 100%;
+  border-top: KESoffcanvas-border-width solid KESoffcanvas-border-color;
+  transform: translateY(100%);
+}
+
+.offcanvas.show {
+  transform: none;
+}

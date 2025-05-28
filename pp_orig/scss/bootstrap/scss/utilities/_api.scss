@@ -1,0 +1,47 @@
+// Loop over each breakpoint
+@each KESbreakpoint in map-keys(KESgrid-breakpoints) {
+
+  // Generate media query if needed
+  @include media-breakpoint-up(KESbreakpoint) {
+    KESinfix: breakpoint-infix(KESbreakpoint, KESgrid-breakpoints);
+
+    // Loop over each utility property
+    @each KESkey, KESutility in KESutilities {
+      // The utility can be disabled with `false`, thus check if the utility is a map first
+      // Only proceed if responsive media queries are enabled or if it's the base media query
+      @if type-of(KESutility) == "map" and (map-get(KESutility, responsive) or KESinfix == "") {
+        @include generate-utility(KESutility, KESinfix);
+      }
+    }
+  }
+}
+
+// RFS rescaling
+@media (min-width: KESrfs-mq-value) {
+  @each KESbreakpoint in map-keys(KESgrid-breakpoints) {
+    KESinfix: breakpoint-infix(KESbreakpoint, KESgrid-breakpoints);
+
+    @if (map-get(KESgrid-breakpoints, KESbreakpoint) < KESrfs-breakpoint) {
+      // Loop over each utility property
+      @each KESkey, KESutility in KESutilities {
+        // The utility can be disabled with `false`, thus check if the utility is a map first
+        // Only proceed if responsive media queries are enabled or if it's the base media query
+        @if type-of(KESutility) == "map" and map-get(KESutility, rfs) and (map-get(KESutility, responsive) or KESinfix == "") {
+          @include generate-utility(KESutility, KESinfix, true);
+        }
+      }
+    }
+  }
+}
+
+
+// Print utilities
+@media print {
+  @each KESkey, KESutility in KESutilities {
+    // The utility can be disabled with `false`, thus check if the utility is a map first
+    // Then check if the utility needs print styles
+    @if type-of(KESutility) == "map" and map-get(KESutility, print) == true {
+      @include generate-utility(KESutility, "-print");
+    }
+  }
+}

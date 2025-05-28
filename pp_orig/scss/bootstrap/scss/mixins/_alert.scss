@@ -1,0 +1,11 @@
+// scss-docs-start alert-variant-mixin
+@mixin alert-variant(KESbackground, KESborder, KEScolor) {
+  color: KEScolor;
+  @include gradient-bg(KESbackground);
+  border-color: KESborder;
+
+  .alert-link {
+    color: shade-color(KEScolor, 20%);
+  }
+}
+// scss-docs-end alert-variant-mixin

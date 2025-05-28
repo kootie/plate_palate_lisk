@@ -1,0 +1,24 @@
+// List Groups
+
+// scss-docs-start list-group-mixin
+@mixin list-group-item-variant(KESstate, KESbackground, KEScolor) {
+  .list-group-item-#{KESstate} {
+    color: KEScolor;
+    background-color: KESbackground;
+
+    &.list-group-item-action {
+      &:hover,
+      &:focus {
+        color: KEScolor;
+        background-color: shade-color(KESbackground, 10%);
+      }
+
+      &.active {
+        color: KESwhite;
+        background-color: KEScolor;
+        border-color: KEScolor;
+      }
+    }
+  }
+}
+// scss-docs-end list-group-mixin

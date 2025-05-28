@@ -1,0 +1,104 @@
+.nft-recipe-card {
+  background: var(--bs-white);
+  border-radius: 8px;
+  box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+  transition: 0.5s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.nft-recipe-card:hover {
+  transform: translateY(-5px);
+}
+
+.nft-recipe-card .recipe-image {
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  position: relative;
+  padding-top: 75%; /* 4:3 Aspect Ratio */
+}
+
+.nft-recipe-card .recipe-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nft-recipe-card .recipe-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.nft-recipe-card .recipe-title {
+  color: var(--bs-dark);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.nft-recipe-card .recipe-chef {
+  color: var(--bs-primary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.nft-recipe-card .recipe-description {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.nft-recipe-card .recipe-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.nft-recipe-card .recipe-actions {
+  margin-top: auto;
+}
+
+.nft-recipe-card .recipe-price {
+  color: var(--bs-dark);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.nft-recipe-card .btn {
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+}
+
+.nft-recipe-card .btn-outline-primary {
+  border-color: var(--bs-primary);
+  color: var(--bs-primary);
+}
+
+.nft-recipe-card .btn-outline-primary:hover {
+  background-color: var(--bs-primary);
+  color: var(--bs-white);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nft-recipe-card .recipe-content {
+    padding: 1rem;
+  }
+  
+  .nft-recipe-card .recipe-title {
+    font-size: 1.1rem;
+  }
+  
+  .nft-recipe-card .recipe-description {
+    font-size: 0.9rem;
+  }
+} 

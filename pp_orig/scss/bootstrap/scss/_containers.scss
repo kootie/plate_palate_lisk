@@ -1,0 +1,41 @@
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+@if KESenable-grid-classes {
+  // Single container class with breakpoint max-widths
+  .container,
+  // 100% wide container at all breakpoints
+  .container-fluid {
+    @include make-container();
+  }
+
+  // Responsive containers that are 100% wide until a breakpoint
+  @each KESbreakpoint, KEScontainer-max-width in KEScontainer-max-widths {
+    .container-#{KESbreakpoint} {
+      @extend .container-fluid;
+    }
+
+    @include media-breakpoint-up(KESbreakpoint, KESgrid-breakpoints) {
+      %responsive-container-#{KESbreakpoint} {
+        max-width: KEScontainer-max-width;
+      }
+
+      // Extend each breakpoint which is smaller or equal to the current breakpoint
+      KESextend-breakpoint: true;
+
+      @each KESname, KESwidth in KESgrid-breakpoints {
+        @if (KESextend-breakpoint) {
+          .container#{breakpoint-infix(KESname, KESgrid-breakpoints)} {
+            @extend %responsive-container-#{KESbreakpoint};
+          }
+
+          // Once the current breakpoint is reached, stop extending
+          @if (KESbreakpoint == KESname) {
+            KESextend-breakpoint: false;
+          }
+        }
+      }
+    }
+  }
+}

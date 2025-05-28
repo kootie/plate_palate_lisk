@@ -1,0 +1,38 @@
+.footer {
+  margin-top: auto;
+}
+
+.footer h5 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.footer ul li {
+  margin-bottom: 0.75rem;
+}
+
+.footer ul li a {
+  transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+  color: var(--bs-primary) !important;
+}
+
+.footer hr {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer .bi {
+  color: var(--bs-primary);
+}
+
+@media (max-width: 991.98px) {
+  .footer {
+    text-align: center;
+  }
+  
+  .footer .col-lg-4 {
+    margin-bottom: 2rem;
+  }
+} 

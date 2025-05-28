@@ -1,0 +1,75 @@
+.event-form {
+  background: var(--bs-white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+}
+
+.event-form .form-control {
+  border: 1px solid rgba(0, 0, 0, .1);
+  padding: 0.75rem;
+}
+
+.event-form .form-control:focus {
+  border-color: var(--bs-primary);
+  box-shadow: none;
+}
+
+.allergies-section {
+  background: var(--bs-light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.allergies-container {
+  background: var(--bs-white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .05);
+}
+
+.allergies-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.allergies-select option {
+  padding: 0.5rem;
+}
+
+.allergies-select option:checked {
+  background-color: var(--bs-primary);
+  color: var(--bs-white);
+}
+
+.form-check-input:checked {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.form-check-label {
+  color: var(--bs-dark);
+  font-weight: 500;
+}
+
+.text-muted {
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .event-form {
+    padding: 1.5rem;
+  }
+  
+  .allergies-section {
+    padding: 1rem;
+  }
+  
+  .allergies-container {
+    padding: 1rem;
+  }
+} 

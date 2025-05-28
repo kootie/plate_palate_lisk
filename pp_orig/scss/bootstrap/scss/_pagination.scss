@@ -1,0 +1,64 @@
+.pagination {
+  display: flex;
+  @include list-unstyled();
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  color: KESpagination-color;
+  text-decoration: if(KESlink-decoration == none, null, none);
+  background-color: KESpagination-bg;
+  border: KESpagination-border-width solid KESpagination-border-color;
+  @include transition(KESpagination-transition);
+
+  &:hover {
+    z-index: 2;
+    color: KESpagination-hover-color;
+    text-decoration: if(KESlink-hover-decoration == underline, none, null);
+    background-color: KESpagination-hover-bg;
+    border-color: KESpagination-hover-border-color;
+  }
+
+  &:focus {
+    z-index: 3;
+    color: KESpagination-focus-color;
+    background-color: KESpagination-focus-bg;
+    outline: KESpagination-focus-outline;
+    box-shadow: KESpagination-focus-box-shadow;
+  }
+}
+
+.page-item {
+  &:not(:first-child) .page-link {
+    margin-left: KESpagination-margin-start;
+  }
+
+  &.active .page-link {
+    z-index: 3;
+    color: KESpagination-active-color;
+    @include gradient-bg(KESpagination-active-bg);
+    border-color: KESpagination-active-border-color;
+  }
+
+  &.disabled .page-link {
+    color: KESpagination-disabled-color;
+    pointer-events: none;
+    background-color: KESpagination-disabled-bg;
+    border-color: KESpagination-disabled-border-color;
+  }
+}
+
+
+//
+// Sizing
+//
+@include pagination-size(KESpagination-padding-y, KESpagination-padding-x, null, KESpagination-border-radius);
+
+.pagination-lg {
+  @include pagination-size(KESpagination-padding-y-lg, KESpagination-padding-x-lg, KESfont-size-lg, KESpagination-border-radius-lg);
+}
+
+.pagination-sm {
+  @include pagination-size(KESpagination-padding-y-sm, KESpagination-padding-x-sm, KESfont-size-sm, KESpagination-border-radius-sm);
+}

@@ -1,0 +1,158 @@
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0 #{"/* rtl:ignore */"};
+  z-index: KESzindex-popover;
+  display: block;
+  max-width: KESpopover-max-width;
+  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  @include reset-text();
+  @include font-size(KESpopover-font-size);
+  // Allow breaking very long words so they don't overflow the popover's bounds
+  word-wrap: break-word;
+  background-color: KESpopover-bg;
+  background-clip: padding-box;
+  border: KESpopover-border-width solid KESpopover-border-color;
+  @include border-radius(KESpopover-border-radius);
+  @include box-shadow(KESpopover-box-shadow);
+
+  .popover-arrow {
+    position: absolute;
+    display: block;
+    width: KESpopover-arrow-width;
+    height: KESpopover-arrow-height;
+
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      border-color: transparent;
+      border-style: solid;
+    }
+  }
+}
+
+.bs-popover-top {
+  > .popover-arrow {
+    bottom: subtract(-KESpopover-arrow-height, KESpopover-border-width);
+
+    &::before {
+      bottom: 0;
+      border-width: KESpopover-arrow-height (KESpopover-arrow-width / 2) 0;
+      border-top-color: KESpopover-arrow-outer-color;
+    }
+
+    &::after {
+      bottom: KESpopover-border-width;
+      border-width: KESpopover-arrow-height (KESpopover-arrow-width / 2) 0;
+      border-top-color: KESpopover-arrow-color;
+    }
+  }
+}
+
+.bs-popover-end {
+  > .popover-arrow {
+    left: subtract(-KESpopover-arrow-height, KESpopover-border-width);
+    width: KESpopover-arrow-height;
+    height: KESpopover-arrow-width;
+
+    &::before {
+      left: 0;
+      border-width: (KESpopover-arrow-width / 2) KESpopover-arrow-height (KESpopover-arrow-width / 2) 0;
+      border-right-color: KESpopover-arrow-outer-color;
+    }
+
+    &::after {
+      left: KESpopover-border-width;
+      border-width: (KESpopover-arrow-width / 2) KESpopover-arrow-height (KESpopover-arrow-width / 2) 0;
+      border-right-color: KESpopover-arrow-color;
+    }
+  }
+}
+
+.bs-popover-bottom {
+  > .popover-arrow {
+    top: subtract(-KESpopover-arrow-height, KESpopover-border-width);
+
+    &::before {
+      top: 0;
+      border-width: 0 (KESpopover-arrow-width / 2) KESpopover-arrow-height (KESpopover-arrow-width / 2);
+      border-bottom-color: KESpopover-arrow-outer-color;
+    }
+
+    &::after {
+      top: KESpopover-border-width;
+      border-width: 0 (KESpopover-arrow-width / 2) KESpopover-arrow-height (KESpopover-arrow-width / 2);
+      border-bottom-color: KESpopover-arrow-color;
+    }
+  }
+
+  // This will remove the popover-header's border just below the arrow
+  .popover-header::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+    width: KESpopover-arrow-width;
+    margin-left: -KESpopover-arrow-width / 2;
+    content: "";
+    border-bottom: KESpopover-border-width solid KESpopover-header-bg;
+  }
+}
+
+.bs-popover-start {
+  > .popover-arrow {
+    right: subtract(-KESpopover-arrow-height, KESpopover-border-width);
+    width: KESpopover-arrow-height;
+    height: KESpopover-arrow-width;
+
+    &::before {
+      right: 0;
+      border-width: (KESpopover-arrow-width / 2) 0 (KESpopover-arrow-width / 2) KESpopover-arrow-height;
+      border-left-color: KESpopover-arrow-outer-color;
+    }
+
+    &::after {
+      right: KESpopover-border-width;
+      border-width: (KESpopover-arrow-width / 2) 0 (KESpopover-arrow-width / 2) KESpopover-arrow-height;
+      border-left-color: KESpopover-arrow-color;
+    }
+  }
+}
+
+.bs-popover-auto {
+  &[data-popper-placement^="top"] {
+    @extend .bs-popover-top;
+  }
+  &[data-popper-placement^="right"] {
+    @extend .bs-popover-end;
+  }
+  &[data-popper-placement^="bottom"] {
+    @extend .bs-popover-bottom;
+  }
+  &[data-popper-placement^="left"] {
+    @extend .bs-popover-start;
+  }
+}
+
+// Offset the popover to account for the popover arrow
+.popover-header {
+  padding: KESpopover-header-padding-y KESpopover-header-padding-x;
+  margin-bottom: 0; // Reset the default from Reboot
+  @include font-size(KESfont-size-base);
+  color: KESpopover-header-color;
+  background-color: KESpopover-header-bg;
+  border-bottom: KESpopover-border-width solid shade-color(KESpopover-header-bg, 10%);
+  @include border-top-radius(KESpopover-inner-border-radius);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.popover-body {
+  padding: KESpopover-body-padding-y KESpopover-body-padding-x;
+  color: KESpopover-body-color;
+}

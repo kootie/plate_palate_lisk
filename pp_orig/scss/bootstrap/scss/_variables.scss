@@ -1,0 +1,1464 @@
+// Variables
+//
+// Variables should follow the `KEScomponent-state-property-size` formula for
+// consistent naming. Ex: KESnav-link-disabled-color and KESmodal-content-box-shadow-xs.
+
+// Color system
+
+// scss-docs-start gray-color-variables
+KESwhite:    #fff !default;
+KESgray-100: #f8f9fa !default;
+KESgray-200: #e9ecef !default;
+KESgray-300: #dee2e6 !default;
+KESgray-400: #ced4da !default;
+KESgray-500: #adb5bd !default;
+KESgray-600: #6c757d !default;
+KESgray-700: #495057 !default;
+KESgray-800: #343a40 !default;
+KESgray-900: #212529 !default;
+KESblack:    #000 !default;
+// scss-docs-end gray-color-variables
+
+// fusv-disable
+// scss-docs-start gray-colors-map
+KESgrays: (
+  "100": KESgray-100,
+  "200": KESgray-200,
+  "300": KESgray-300,
+  "400": KESgray-400,
+  "500": KESgray-500,
+  "600": KESgray-600,
+  "700": KESgray-700,
+  "800": KESgray-800,
+  "900": KESgray-900
+) !default;
+// scss-docs-end gray-colors-map
+// fusv-enable
+
+// scss-docs-start color-variables
+KESblue:    #0d6efd !default;
+KESindigo:  #6610f2 !default;
+KESpurple:  #6f42c1 !default;
+KESpink:    #d63384 !default;
+KESred:     #dc3545 !default;
+KESorange:  #fd7e14 !default;
+KESyellow:  #ffc107 !default;
+KESgreen:   #198754 !default;
+KESteal:    #20c997 !default;
+KEScyan:    #0dcaf0 !default;
+// scss-docs-end color-variables
+
+// scss-docs-start colors-map
+KEScolors: (
+  "blue":       KESblue,
+  "indigo":     KESindigo,
+  "purple":     KESpurple,
+  "pink":       KESpink,
+  "red":        KESred,
+  "orange":     KESorange,
+  "yellow":     KESyellow,
+  "green":      KESgreen,
+  "teal":       KESteal,
+  "cyan":       KEScyan,
+  "white":      KESwhite,
+  "gray":       KESgray-600,
+  "gray-dark":  KESgray-800
+) !default;
+// scss-docs-end colors-map
+
+// scss-docs-start theme-color-variables
+KESprimary:       KESblue !default;
+KESsecondary:     KESgray-600 !default;
+KESsuccess:       KESgreen !default;
+KESinfo:          KEScyan !default;
+KESwarning:       KESyellow !default;
+KESdanger:        KESred !default;
+KESlight:         KESgray-100 !default;
+KESdark:          KESgray-900 !default;
+// scss-docs-end theme-color-variables
+
+// scss-docs-start theme-colors-map
+KEStheme-colors: (
+  "primary":    KESprimary,
+  "secondary":  KESsecondary,
+  "success":    KESsuccess,
+  "info":       KESinfo,
+  "warning":    KESwarning,
+  "danger":     KESdanger,
+  "light":      KESlight,
+  "dark":       KESdark
+) !default;
+// scss-docs-end theme-colors-map
+
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+KESmin-contrast-ratio:   4.5 !default;
+
+// Customize the light and dark text colors for use in our color contrast function.
+KEScolor-contrast-dark:      KESblack !default;
+KEScolor-contrast-light:     KESwhite !default;
+
+// fusv-disable
+KESblue-100: tint-color(KESblue, 80%) !default;
+KESblue-200: tint-color(KESblue, 60%) !default;
+KESblue-300: tint-color(KESblue, 40%) !default;
+KESblue-400: tint-color(KESblue, 20%) !default;
+KESblue-500: KESblue !default;
+KESblue-600: shade-color(KESblue, 20%) !default;
+KESblue-700: shade-color(KESblue, 40%) !default;
+KESblue-800: shade-color(KESblue, 60%) !default;
+KESblue-900: shade-color(KESblue, 80%) !default;
+
+KESindigo-100: tint-color(KESindigo, 80%) !default;
+KESindigo-200: tint-color(KESindigo, 60%) !default;
+KESindigo-300: tint-color(KESindigo, 40%) !default;
+KESindigo-400: tint-color(KESindigo, 20%) !default;
+KESindigo-500: KESindigo !default;
+KESindigo-600: shade-color(KESindigo, 20%) !default;
+KESindigo-700: shade-color(KESindigo, 40%) !default;
+KESindigo-800: shade-color(KESindigo, 60%) !default;
+KESindigo-900: shade-color(KESindigo, 80%) !default;
+
+KESpurple-100: tint-color(KESpurple, 80%) !default;
+KESpurple-200: tint-color(KESpurple, 60%) !default;
+KESpurple-300: tint-color(KESpurple, 40%) !default;
+KESpurple-400: tint-color(KESpurple, 20%) !default;
+KESpurple-500: KESpurple !default;
+KESpurple-600: shade-color(KESpurple, 20%) !default;
+KESpurple-700: shade-color(KESpurple, 40%) !default;
+KESpurple-800: shade-color(KESpurple, 60%) !default;
+KESpurple-900: shade-color(KESpurple, 80%) !default;
+
+KESpink-100: tint-color(KESpink, 80%) !default;
+KESpink-200: tint-color(KESpink, 60%) !default;
+KESpink-300: tint-color(KESpink, 40%) !default;
+KESpink-400: tint-color(KESpink, 20%) !default;
+KESpink-500: KESpink !default;
+KESpink-600: shade-color(KESpink, 20%) !default;
+KESpink-700: shade-color(KESpink, 40%) !default;
+KESpink-800: shade-color(KESpink, 60%) !default;
+KESpink-900: shade-color(KESpink, 80%) !default;
+
+KESred-100: tint-color(KESred, 80%) !default;
+KESred-200: tint-color(KESred, 60%) !default;
+KESred-300: tint-color(KESred, 40%) !default;
+KESred-400: tint-color(KESred, 20%) !default;
+KESred-500: KESred !default;
+KESred-600: shade-color(KESred, 20%) !default;
+KESred-700: shade-color(KESred, 40%) !default;
+KESred-800: shade-color(KESred, 60%) !default;
+KESred-900: shade-color(KESred, 80%) !default;
+
+KESorange-100: tint-color(KESorange, 80%) !default;
+KESorange-200: tint-color(KESorange, 60%) !default;
+KESorange-300: tint-color(KESorange, 40%) !default;
+KESorange-400: tint-color(KESorange, 20%) !default;
+KESorange-500: KESorange !default;
+KESorange-600: shade-color(KESorange, 20%) !default;
+KESorange-700: shade-color(KESorange, 40%) !default;
+KESorange-800: shade-color(KESorange, 60%) !default;
+KESorange-900: shade-color(KESorange, 80%) !default;
+
+KESyellow-100: tint-color(KESyellow, 80%) !default;
+KESyellow-200: tint-color(KESyellow, 60%) !default;
+KESyellow-300: tint-color(KESyellow, 40%) !default;
+KESyellow-400: tint-color(KESyellow, 20%) !default;
+KESyellow-500: KESyellow !default;
+KESyellow-600: shade-color(KESyellow, 20%) !default;
+KESyellow-700: shade-color(KESyellow, 40%) !default;
+KESyellow-800: shade-color(KESyellow, 60%) !default;
+KESyellow-900: shade-color(KESyellow, 80%) !default;
+
+KESgreen-100: tint-color(KESgreen, 80%) !default;
+KESgreen-200: tint-color(KESgreen, 60%) !default;
+KESgreen-300: tint-color(KESgreen, 40%) !default;
+KESgreen-400: tint-color(KESgreen, 20%) !default;
+KESgreen-500: KESgreen !default;
+KESgreen-600: shade-color(KESgreen, 20%) !default;
+KESgreen-700: shade-color(KESgreen, 40%) !default;
+KESgreen-800: shade-color(KESgreen, 60%) !default;
+KESgreen-900: shade-color(KESgreen, 80%) !default;
+
+KESteal-100: tint-color(KESteal, 80%) !default;
+KESteal-200: tint-color(KESteal, 60%) !default;
+KESteal-300: tint-color(KESteal, 40%) !default;
+KESteal-400: tint-color(KESteal, 20%) !default;
+KESteal-500: KESteal !default;
+KESteal-600: shade-color(KESteal, 20%) !default;
+KESteal-700: shade-color(KESteal, 40%) !default;
+KESteal-800: shade-color(KESteal, 60%) !default;
+KESteal-900: shade-color(KESteal, 80%) !default;
+
+KEScyan-100: tint-color(KEScyan, 80%) !default;
+KEScyan-200: tint-color(KEScyan, 60%) !default;
+KEScyan-300: tint-color(KEScyan, 40%) !default;
+KEScyan-400: tint-color(KEScyan, 20%) !default;
+KEScyan-500: KEScyan !default;
+KEScyan-600: shade-color(KEScyan, 20%) !default;
+KEScyan-700: shade-color(KEScyan, 40%) !default;
+KEScyan-800: shade-color(KEScyan, 60%) !default;
+KEScyan-900: shade-color(KEScyan, 80%) !default;
+// fusv-enable
+
+// Characters which are escaped by the escape-svg function
+KESescaped-characters: (
+  ("<", "%3c"),
+  (">", "%3e"),
+  ("#", "%23"),
+  ("(", "%28"),
+  (")", "%29"),
+) !default;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+KESenable-caret:                true !default;
+KESenable-rounded:              true !default;
+KESenable-shadows:              false !default;
+KESenable-gradients:            false !default;
+KESenable-transitions:          true !default;
+KESenable-reduced-motion:       true !default;
+KESenable-smooth-scroll:        true !default;
+KESenable-grid-classes:         true !default;
+KESenable-button-pointers:      true !default;
+KESenable-rfs:                  true !default;
+KESenable-validation-icons:     true !default;
+KESenable-negative-margins:     false !default;
+KESenable-deprecation-messages: true !default;
+KESenable-important-utilities:  true !default;
+
+// Prefix for :root CSS variables
+
+KESvariable-prefix:             bs- !default;
+
+// Gradient
+//
+// The gradient which is added to components if `KESenable-gradients` is `true`
+// This gradient is also added to elements with `.bg-gradient`
+// scss-docs-start variable-gradient
+KESgradient: linear-gradient(180deg, rgba(KESwhite, .15), rgba(KESwhite, 0)) !default;
+// scss-docs-end variable-gradient
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the KESspacers map, should you need more variation.
+
+// scss-docs-start spacer-variables-maps
+KESspacer: 1rem !default;
+KESspacers: (
+  0: 0,
+  1: KESspacer / 4,
+  2: KESspacer / 2,
+  3: KESspacer,
+  4: KESspacer * 1.5,
+  5: KESspacer * 3,
+) !default;
+
+KESnegative-spacers: if(KESenable-negative-margins, negativify-map(KESspacers), null) !default;
+// scss-docs-end spacer-variables-maps
+
+// Position
+//
+// Define the edge positioning anchors of the position utilities.
+
+// scss-docs-start position-map
+KESposition-values: (
+  0: 0,
+  50: 50%,
+  100: 100%
+) !default;
+// scss-docs-end position-map
+
+// Body
+//
+// Settings for the `<body>` element.
+
+KESbody-bg:                   KESwhite !default;
+KESbody-color:                KESgray-900 !default;
+KESbody-text-align:           null !default;
+
+
+// Links
+//
+// Style anchor elements.
+
+KESlink-color:                              KESprimary !default;
+KESlink-decoration:                         underline !default;
+KESlink-shade-percentage:                   20% !default;
+KESlink-hover-color:                        shift-color(KESlink-color, KESlink-shade-percentage) !default;
+KESlink-hover-decoration:                   null !default;
+
+KESstretched-link-pseudo-element:           after !default;
+KESstretched-link-z-index:                  1 !default;
+
+// Paragraphs
+//
+// Style p element.
+
+KESparagraph-margin-bottom:   1rem !default;
+
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+// scss-docs-start grid-breakpoints
+KESgrid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+// scss-docs-end grid-breakpoints
+
+@include _assert-ascending(KESgrid-breakpoints, "KESgrid-breakpoints");
+@include _assert-starts-at-zero(KESgrid-breakpoints, "KESgrid-breakpoints");
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+// scss-docs-start container-max-widths
+KEScontainer-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+) !default;
+// scss-docs-end container-max-widths
+
+@include _assert-ascending(KEScontainer-max-widths, "KEScontainer-max-widths");
+
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+KESgrid-columns:                12 !default;
+KESgrid-gutter-width:           1.5rem !default;
+KESgrid-row-columns:            6 !default;
+
+KESgutters: KESspacers !default;
+
+// Container padding
+
+KEScontainer-padding-x: KESgrid-gutter-width / 2 !default;
+
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+// scss-docs-start border-variables
+KESborder-width:                1px !default;
+KESborder-widths: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px
+) !default;
+
+KESborder-color:                KESgray-300 !default;
+// scss-docs-end border-variables
+
+// scss-docs-start border-radius-variables
+KESborder-radius:               .25rem !default;
+KESborder-radius-sm:            .2rem !default;
+KESborder-radius-lg:            .3rem !default;
+KESborder-radius-pill:          50rem !default;
+// scss-docs-end border-radius-variables
+
+// scss-docs-start box-shadow-variables
+KESbox-shadow:                  0 .5rem 1rem rgba(KESblack, .15) !default;
+KESbox-shadow-sm:               0 .125rem .25rem rgba(KESblack, .075) !default;
+KESbox-shadow-lg:               0 1rem 3rem rgba(KESblack, .175) !default;
+KESbox-shadow-inset:            inset 0 1px 2px rgba(KESblack, .075) !default;
+// scss-docs-end box-shadow-variables
+
+KEScomponent-active-color:      KESwhite !default;
+KEScomponent-active-bg:         KESprimary !default;
+
+// scss-docs-start caret-variables
+KEScaret-width:                 .3em !default;
+KEScaret-vertical-align:        KEScaret-width * .85 !default;
+KEScaret-spacing:               KEScaret-width * .85 !default;
+// scss-docs-end caret-variables
+
+KEStransition-base:             all .2s ease-in-out !default;
+KEStransition-fade:             opacity .15s linear !default;
+// scss-docs-start collapse-transition
+KEStransition-collapse:         height .35s ease !default;
+// scss-docs-end collapse-transition
+
+// stylelint-disable function-disallowed-list
+// scss-docs-start aspect-ratios
+KESaspect-ratios: (
+  "1x1": 100%,
+  "4x3": calc(3 / 4 * 100%),
+  "16x9": calc(9 / 16 * 100%),
+  "21x9": calc(9 / 21 * 100%)
+) !default;
+// scss-docs-end aspect-ratios
+// stylelint-enable function-disallowed-list
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// scss-docs-start font-variables
+// stylelint-disable value-keyword-case
+KESfont-family-sans-serif:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+KESfont-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+// stylelint-enable value-keyword-case
+KESfont-family-base:            var(--#{KESvariable-prefix}font-sans-serif) !default;
+KESfont-family-code:            var(--#{KESvariable-prefix}font-monospace) !default;
+
+// KESfont-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
+// KESfont-size-base effects the font size of the body text
+KESfont-size-root:              null !default;
+KESfont-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+KESfont-size-sm:                KESfont-size-base * .875 !default;
+KESfont-size-lg:                KESfont-size-base * 1.25 !default;
+
+KESfont-weight-lighter:         lighter !default;
+KESfont-weight-light:           300 !default;
+KESfont-weight-normal:          400 !default;
+KESfont-weight-bold:            700 !default;
+KESfont-weight-bolder:          bolder !default;
+
+KESfont-weight-base:            KESfont-weight-normal !default;
+
+KESline-height-base:            1.5 !default;
+KESline-height-sm:              1.25 !default;
+KESline-height-lg:              2 !default;
+
+KESh1-font-size:                KESfont-size-base * 2.5 !default;
+KESh2-font-size:                KESfont-size-base * 2 !default;
+KESh3-font-size:                KESfont-size-base * 1.75 !default;
+KESh4-font-size:                KESfont-size-base * 1.5 !default;
+KESh5-font-size:                KESfont-size-base * 1.25 !default;
+KESh6-font-size:                KESfont-size-base !default;
+// scss-docs-end font-variables
+
+// scss-docs-start font-sizes
+KESfont-sizes: (
+  1: KESh1-font-size,
+  2: KESh2-font-size,
+  3: KESh3-font-size,
+  4: KESh4-font-size,
+  5: KESh5-font-size,
+  6: KESh6-font-size
+) !default;
+// scss-docs-end font-sizes
+
+// scss-docs-start headings-variables
+KESheadings-margin-bottom:      KESspacer / 2 !default;
+KESheadings-font-family:        null !default;
+KESheadings-font-style:         null !default;
+KESheadings-font-weight:        500 !default;
+KESheadings-line-height:        1.2 !default;
+KESheadings-color:              null !default;
+// scss-docs-end headings-variables
+
+// scss-docs-start display-headings
+KESdisplay-font-sizes: (
+  1: 5rem,
+  2: 4.5rem,
+  3: 4rem,
+  4: 3.5rem,
+  5: 3rem,
+  6: 2.5rem
+) !default;
+
+KESdisplay-font-weight: 300 !default;
+KESdisplay-line-height: KESheadings-line-height !default;
+// scss-docs-end display-headings
+
+// scss-docs-start type-variables
+KESlead-font-size:              KESfont-size-base * 1.25 !default;
+KESlead-font-weight:            300 !default;
+
+KESsmall-font-size:             .875em !default;
+
+KESsub-sup-font-size:           .75em !default;
+
+KEStext-muted:                  KESgray-600 !default;
+
+KESinitialism-font-size:        KESsmall-font-size !default;
+
+KESblockquote-margin-y:         KESspacer !default;
+KESblockquote-font-size:        KESfont-size-base * 1.25 !default;
+KESblockquote-footer-color:     KESgray-600 !default;
+KESblockquote-footer-font-size: KESsmall-font-size !default;
+
+KEShr-margin-y:                 KESspacer !default;
+KEShr-color:                    inherit !default;
+KEShr-height:                   KESborder-width !default;
+KEShr-opacity:                  .25 !default;
+
+KESlegend-margin-bottom:        .5rem !default;
+KESlegend-font-size:            1.5rem !default;
+KESlegend-font-weight:          null !default;
+
+KESmark-padding:                .2em !default;
+
+KESdt-font-weight:              KESfont-weight-bold !default;
+
+KESnested-kbd-font-weight:      KESfont-weight-bold !default;
+
+KESlist-inline-padding:         .5rem !default;
+
+KESmark-bg:                     #fcf8e3 !default;
+// scss-docs-end type-variables
+
+
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+// scss-docs-start table-variables
+KEStable-cell-padding-y:        .5rem !default;
+KEStable-cell-padding-x:        .5rem !default;
+KEStable-cell-padding-y-sm:     .25rem !default;
+KEStable-cell-padding-x-sm:     .25rem !default;
+
+KEStable-cell-vertical-align:   top !default;
+
+KEStable-color:                 KESbody-color !default;
+KEStable-bg:                    transparent !default;
+
+KEStable-th-font-weight:        null !default;
+
+KEStable-striped-color:         KEStable-color !default;
+KEStable-striped-bg-factor:     .05 !default;
+KEStable-striped-bg:            rgba(KESblack, KEStable-striped-bg-factor) !default;
+
+KEStable-active-color:          KEStable-color !default;
+KEStable-active-bg-factor:      .1 !default;
+KEStable-active-bg:             rgba(KESblack, KEStable-active-bg-factor) !default;
+
+KEStable-hover-color:           KEStable-color !default;
+KEStable-hover-bg-factor:       .075 !default;
+KEStable-hover-bg:              rgba(KESblack, KEStable-hover-bg-factor) !default;
+
+KEStable-border-factor:         .1 !default;
+KEStable-border-width:          KESborder-width !default;
+KEStable-border-color:          KESborder-color !default;
+
+KEStable-striped-order:         odd !default;
+
+KEStable-group-separator-color: currentColor !default;
+
+KEStable-caption-color:         KEStext-muted !default;
+
+KEStable-bg-scale:              -80% !default;
+// scss-docs-end table-variables
+
+// scss-docs-start table-loop
+KEStable-variants: (
+  "primary":    shift-color(KESprimary, KEStable-bg-scale),
+  "secondary":  shift-color(KESsecondary, KEStable-bg-scale),
+  "success":    shift-color(KESsuccess, KEStable-bg-scale),
+  "info":       shift-color(KESinfo, KEStable-bg-scale),
+  "warning":    shift-color(KESwarning, KEStable-bg-scale),
+  "danger":     shift-color(KESdanger, KEStable-bg-scale),
+  "light":      KESlight,
+  "dark":       KESdark,
+) !default;
+// scss-docs-end table-loop
+
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `KESinput-` and `KESbtn-` specific variables.
+
+// scss-docs-start input-btn-variables
+KESinput-btn-padding-y:         .375rem !default;
+KESinput-btn-padding-x:         .75rem !default;
+KESinput-btn-font-family:       null !default;
+KESinput-btn-font-size:         KESfont-size-base !default;
+KESinput-btn-line-height:       KESline-height-base !default;
+
+KESinput-btn-focus-width:         .25rem !default;
+KESinput-btn-focus-color-opacity: .25 !default;
+KESinput-btn-focus-color:         rgba(KEScomponent-active-bg, KESinput-btn-focus-color-opacity) !default;
+KESinput-btn-focus-blur:          0 !default;
+KESinput-btn-focus-box-shadow:    0 0 KESinput-btn-focus-blur KESinput-btn-focus-width KESinput-btn-focus-color !default;
+
+KESinput-btn-padding-y-sm:      .25rem !default;
+KESinput-btn-padding-x-sm:      .5rem !default;
+KESinput-btn-font-size-sm:      KESfont-size-sm !default;
+
+KESinput-btn-padding-y-lg:      .5rem !default;
+KESinput-btn-padding-x-lg:      1rem !default;
+KESinput-btn-font-size-lg:      KESfont-size-lg !default;
+
+KESinput-btn-border-width:      KESborder-width !default;
+// scss-docs-end input-btn-variables
+
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+// scss-docs-start btn-variables
+KESbtn-padding-y:               KESinput-btn-padding-y !default;
+KESbtn-padding-x:               KESinput-btn-padding-x !default;
+KESbtn-font-family:             KESinput-btn-font-family !default;
+KESbtn-font-size:               KESinput-btn-font-size !default;
+KESbtn-line-height:             KESinput-btn-line-height !default;
+KESbtn-white-space:             null !default; // Set to `nowrap` to prevent text wrapping
+
+KESbtn-padding-y-sm:            KESinput-btn-padding-y-sm !default;
+KESbtn-padding-x-sm:            KESinput-btn-padding-x-sm !default;
+KESbtn-font-size-sm:            KESinput-btn-font-size-sm !default;
+
+KESbtn-padding-y-lg:            KESinput-btn-padding-y-lg !default;
+KESbtn-padding-x-lg:            KESinput-btn-padding-x-lg !default;
+KESbtn-font-size-lg:            KESinput-btn-font-size-lg !default;
+
+KESbtn-border-width:            KESinput-btn-border-width !default;
+
+KESbtn-font-weight:             KESfont-weight-normal !default;
+KESbtn-box-shadow:              inset 0 1px 0 rgba(KESwhite, .15), 0 1px 1px rgba(KESblack, .075) !default;
+KESbtn-focus-width:             KESinput-btn-focus-width !default;
+KESbtn-focus-box-shadow:        KESinput-btn-focus-box-shadow !default;
+KESbtn-disabled-opacity:        .65 !default;
+KESbtn-active-box-shadow:       inset 0 3px 5px rgba(KESblack, .125) !default;
+
+KESbtn-link-color:              KESlink-color !default;
+KESbtn-link-hover-color:        KESlink-hover-color !default;
+KESbtn-link-disabled-color:     KESgray-600 !default;
+
+// Allows for customizing button radius independently from global border radius
+KESbtn-border-radius:           KESborder-radius !default;
+KESbtn-border-radius-sm:        KESborder-radius-sm !default;
+KESbtn-border-radius-lg:        KESborder-radius-lg !default;
+
+KESbtn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
+KESbtn-hover-bg-shade-amount:       15% !default;
+KESbtn-hover-bg-tint-amount:        15% !default;
+KESbtn-hover-border-shade-amount:   20% !default;
+KESbtn-hover-border-tint-amount:    10% !default;
+KESbtn-active-bg-shade-amount:      20% !default;
+KESbtn-active-bg-tint-amount:       20% !default;
+KESbtn-active-border-shade-amount:  25% !default;
+KESbtn-active-border-tint-amount:   10% !default;
+// scss-docs-end btn-variables
+
+
+// Forms
+
+// scss-docs-start form-text-variables
+KESform-text-margin-top:                  .25rem !default;
+KESform-text-font-size:                   KESsmall-font-size !default;
+KESform-text-font-style:                  null !default;
+KESform-text-font-weight:                 null !default;
+KESform-text-color:                       KEStext-muted !default;
+// scss-docs-end form-text-variables
+
+// scss-docs-start form-label-variables
+KESform-label-margin-bottom:              .5rem !default;
+KESform-label-font-size:                  null !default;
+KESform-label-font-style:                 null !default;
+KESform-label-font-weight:                null !default;
+KESform-label-color:                      null !default;
+// scss-docs-end form-label-variables
+
+// scss-docs-start form-input-variables
+KESinput-padding-y:                       KESinput-btn-padding-y !default;
+KESinput-padding-x:                       KESinput-btn-padding-x !default;
+KESinput-font-family:                     KESinput-btn-font-family !default;
+KESinput-font-size:                       KESinput-btn-font-size !default;
+KESinput-font-weight:                     KESfont-weight-base !default;
+KESinput-line-height:                     KESinput-btn-line-height !default;
+
+KESinput-padding-y-sm:                    KESinput-btn-padding-y-sm !default;
+KESinput-padding-x-sm:                    KESinput-btn-padding-x-sm !default;
+KESinput-font-size-sm:                    KESinput-btn-font-size-sm !default;
+
+KESinput-padding-y-lg:                    KESinput-btn-padding-y-lg !default;
+KESinput-padding-x-lg:                    KESinput-btn-padding-x-lg !default;
+KESinput-font-size-lg:                    KESinput-btn-font-size-lg !default;
+
+KESinput-bg:                              KESwhite !default;
+KESinput-disabled-bg:                     KESgray-200 !default;
+KESinput-disabled-border-color:           null !default;
+
+KESinput-color:                           KESbody-color !default;
+KESinput-border-color:                    KESgray-400 !default;
+KESinput-border-width:                    KESinput-btn-border-width !default;
+KESinput-box-shadow:                      KESbox-shadow-inset !default;
+
+KESinput-border-radius:                   KESborder-radius !default;
+KESinput-border-radius-sm:                KESborder-radius-sm !default;
+KESinput-border-radius-lg:                KESborder-radius-lg !default;
+
+KESinput-focus-bg:                        KESinput-bg !default;
+KESinput-focus-border-color:              tint-color(KEScomponent-active-bg, 50%) !default;
+KESinput-focus-color:                     KESinput-color !default;
+KESinput-focus-width:                     KESinput-btn-focus-width !default;
+KESinput-focus-box-shadow:                KESinput-btn-focus-box-shadow !default;
+
+KESinput-placeholder-color:               KESgray-600 !default;
+KESinput-plaintext-color:                 KESbody-color !default;
+
+KESinput-height-border:                   KESinput-border-width * 2 !default;
+
+KESinput-height-inner:                    add(KESinput-line-height * 1em, KESinput-padding-y * 2) !default;
+KESinput-height-inner-half:               add(KESinput-line-height * .5em, KESinput-padding-y) !default;
+KESinput-height-inner-quarter:            add(KESinput-line-height * .25em, KESinput-padding-y / 2) !default;
+
+KESinput-height:                          add(KESinput-line-height * 1em, add(KESinput-padding-y * 2, KESinput-height-border, false)) !default;
+KESinput-height-sm:                       add(KESinput-line-height * 1em, add(KESinput-padding-y-sm * 2, KESinput-height-border, false)) !default;
+KESinput-height-lg:                       add(KESinput-line-height * 1em, add(KESinput-padding-y-lg * 2, KESinput-height-border, false)) !default;
+
+KESinput-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+// scss-docs-end form-input-variables
+
+// scss-docs-start form-check-variables
+KESform-check-input-width:                  1em !default;
+KESform-check-min-height:                   KESfont-size-base * KESline-height-base !default;
+KESform-check-padding-start:                KESform-check-input-width + .5em !default;
+KESform-check-margin-bottom:                .125rem !default;
+KESform-check-label-color:                  null !default;
+KESform-check-label-cursor:                 null !default;
+KESform-check-transition:                   null !default;
+
+KESform-check-input-active-filter:          brightness(90%) !default;
+
+KESform-check-input-bg:                     KESinput-bg !default;
+KESform-check-input-border:                 1px solid rgba(KESblack, .25) !default;
+KESform-check-input-border-radius:          .25em !default;
+KESform-check-radio-border-radius:          50% !default;
+KESform-check-input-focus-border:           KESinput-focus-border-color !default;
+KESform-check-input-focus-box-shadow:       KESinput-btn-focus-box-shadow !default;
+
+KESform-check-input-checked-color:          KEScomponent-active-color !default;
+KESform-check-input-checked-bg-color:       KEScomponent-active-bg !default;
+KESform-check-input-checked-border-color:   KESform-check-input-checked-bg-color !default;
+KESform-check-input-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{KESform-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>") !default;
+KESform-check-radio-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{KESform-check-input-checked-color}'/></svg>") !default;
+
+KESform-check-input-indeterminate-color:          KEScomponent-active-color !default;
+KESform-check-input-indeterminate-bg-color:       KEScomponent-active-bg !default;
+KESform-check-input-indeterminate-border-color:   KESform-check-input-indeterminate-bg-color !default;
+KESform-check-input-indeterminate-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{KESform-check-input-indeterminate-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>") !default;
+
+KESform-check-input-disabled-opacity:        .5 !default;
+KESform-check-label-disabled-opacity:        KESform-check-input-disabled-opacity !default;
+KESform-check-btn-check-disabled-opacity:    KESbtn-disabled-opacity !default;
+
+KESform-check-inline-margin-end:    1rem !default;
+// scss-docs-end form-check-variables
+
+// scss-docs-start form-switch-variables
+KESform-switch-color:               rgba(0, 0, 0, .25) !default;
+KESform-switch-width:               2em !default;
+KESform-switch-padding-start:       KESform-switch-width + .5em !default;
+KESform-switch-bg-image:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{KESform-switch-color}'/></svg>") !default;
+KESform-switch-border-radius:       KESform-switch-width !default;
+KESform-switch-transition:          background-position .15s ease-in-out !default;
+
+KESform-switch-focus-color:         KESinput-focus-border-color !default;
+KESform-switch-focus-bg-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{KESform-switch-focus-color}'/></svg>") !default;
+
+KESform-switch-checked-color:       KEScomponent-active-color !default;
+KESform-switch-checked-bg-image:    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{KESform-switch-checked-color}'/></svg>") !default;
+KESform-switch-checked-bg-position: right center !default;
+// scss-docs-end form-switch-variables
+
+// scss-docs-start input-group-variables
+KESinput-group-addon-padding-y:           KESinput-padding-y !default;
+KESinput-group-addon-padding-x:           KESinput-padding-x !default;
+KESinput-group-addon-font-weight:         KESinput-font-weight !default;
+KESinput-group-addon-color:               KESinput-color !default;
+KESinput-group-addon-bg:                  KESgray-200 !default;
+KESinput-group-addon-border-color:        KESinput-border-color !default;
+// scss-docs-end input-group-variables
+
+// scss-docs-start form-select-variables
+KESform-select-padding-y:             KESinput-padding-y !default;
+KESform-select-padding-x:             KESinput-padding-x !default;
+KESform-select-font-family:           KESinput-font-family !default;
+KESform-select-font-size:             KESinput-font-size !default;
+KESform-select-indicator-padding:     KESform-select-padding-x * 3 !default; // Extra padding for background-image
+KESform-select-font-weight:           KESinput-font-weight !default;
+KESform-select-line-height:           KESinput-line-height !default;
+KESform-select-color:                 KESinput-color !default;
+KESform-select-bg:                    KESinput-bg !default;
+KESform-select-disabled-color:        null !default;
+KESform-select-disabled-bg:           KESgray-200 !default;
+KESform-select-disabled-border-color: KESinput-disabled-border-color !default;
+KESform-select-bg-position:           right KESform-select-padding-x center !default;
+KESform-select-bg-size:               16px 12px !default; // In pixels because image dimensions
+KESform-select-indicator-color:       KESgray-800 !default;
+KESform-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{KESform-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>") !default;
+
+KESform-select-feedback-icon-padding-end: KESform-select-padding-x * 2.5 + KESform-select-indicator-padding !default;
+KESform-select-feedback-icon-position:    center right KESform-select-indicator-padding !default;
+KESform-select-feedback-icon-size:        KESinput-height-inner-half KESinput-height-inner-half !default;
+
+KESform-select-border-width:        KESinput-border-width !default;
+KESform-select-border-color:        KESinput-border-color !default;
+KESform-select-border-radius:       KESborder-radius !default;
+KESform-select-box-shadow:          KESbox-shadow-inset !default;
+
+KESform-select-focus-border-color:  KESinput-focus-border-color !default;
+KESform-select-focus-width:         KESinput-focus-width !default;
+KESform-select-focus-box-shadow:    0 0 0 KESform-select-focus-width KESinput-btn-focus-color !default;
+
+KESform-select-padding-y-sm:        KESinput-padding-y-sm !default;
+KESform-select-padding-x-sm:        KESinput-padding-x-sm !default;
+KESform-select-font-size-sm:        KESinput-font-size-sm !default;
+
+KESform-select-padding-y-lg:        KESinput-padding-y-lg !default;
+KESform-select-padding-x-lg:        KESinput-padding-x-lg !default;
+KESform-select-font-size-lg:        KESinput-font-size-lg !default;
+// scss-docs-end form-select-variables
+
+// scss-docs-start form-range-variables
+KESform-range-track-width:          100% !default;
+KESform-range-track-height:         .5rem !default;
+KESform-range-track-cursor:         pointer !default;
+KESform-range-track-bg:             KESgray-300 !default;
+KESform-range-track-border-radius:  1rem !default;
+KESform-range-track-box-shadow:     KESbox-shadow-inset !default;
+
+KESform-range-thumb-width:                   1rem !default;
+KESform-range-thumb-height:                  KESform-range-thumb-width !default;
+KESform-range-thumb-bg:                      KEScomponent-active-bg !default;
+KESform-range-thumb-border:                  0 !default;
+KESform-range-thumb-border-radius:           1rem !default;
+KESform-range-thumb-box-shadow:              0 .1rem .25rem rgba(KESblack, .1) !default;
+KESform-range-thumb-focus-box-shadow:        0 0 0 1px KESbody-bg, KESinput-focus-box-shadow !default;
+KESform-range-thumb-focus-box-shadow-width:  KESinput-focus-width !default; // For focus box shadow issue in Edge
+KESform-range-thumb-active-bg:               tint-color(KEScomponent-active-bg, 70%) !default;
+KESform-range-thumb-disabled-bg:             KESgray-500 !default;
+KESform-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+// scss-docs-end form-range-variables
+
+// scss-docs-start form-file-variables
+KESform-file-button-color:          KESinput-color !default;
+KESform-file-button-bg:             KESinput-group-addon-bg !default;
+KESform-file-button-hover-bg:       shade-color(KESform-file-button-bg, 5%) !default;
+// scss-docs-end form-file-variables
+
+// scss-docs-start form-floating-variables
+KESform-floating-height:            add(3.5rem, KESinput-height-border) !default;
+KESform-floating-padding-x:         KESinput-padding-x !default;
+KESform-floating-padding-y:         1rem !default;
+KESform-floating-input-padding-t:   1.625rem !default;
+KESform-floating-input-padding-b:   .625rem !default;
+KESform-floating-label-opacity:     .65 !default;
+KESform-floating-label-transform:   scale(.85) translateY(-.5rem) translateX(.15rem) !default;
+KESform-floating-transition:        opacity .1s ease-in-out, transform .1s ease-in-out !default;
+// scss-docs-end form-floating-variables
+
+// Form validation
+
+// scss-docs-start form-feedback-variables
+KESform-feedback-margin-top:          KESform-text-margin-top !default;
+KESform-feedback-font-size:           KESform-text-font-size !default;
+KESform-feedback-font-style:          KESform-text-font-style !default;
+KESform-feedback-valid-color:         KESsuccess !default;
+KESform-feedback-invalid-color:       KESdanger !default;
+
+KESform-feedback-icon-valid-color:    KESform-feedback-valid-color !default;
+KESform-feedback-icon-valid:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{KESform-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>") !default;
+KESform-feedback-icon-invalid-color:  KESform-feedback-invalid-color !default;
+KESform-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{KESform-feedback-icon-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{KESform-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
+// scss-docs-end form-feedback-variables
+
+// scss-docs-start form-validation-states
+KESform-validation-states: (
+  "valid": (
+    "color": KESform-feedback-valid-color,
+    "icon": KESform-feedback-icon-valid
+  ),
+  "invalid": (
+    "color": KESform-feedback-invalid-color,
+    "icon": KESform-feedback-icon-invalid
+  )
+) !default;
+// scss-docs-end form-validation-states
+
+// Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+
+// scss-docs-start zindex-stack
+KESzindex-dropdown:                   1000 !default;
+KESzindex-sticky:                     1020 !default;
+KESzindex-fixed:                      1030 !default;
+KESzindex-modal-backdrop:             1040 !default;
+KESzindex-offcanvas:                  1050 !default;
+KESzindex-modal:                      1060 !default;
+KESzindex-popover:                    1070 !default;
+KESzindex-tooltip:                    1080 !default;
+// scss-docs-end zindex-stack
+
+
+// Navs
+
+// scss-docs-start nav-variables
+KESnav-link-padding-y:                .5rem !default;
+KESnav-link-padding-x:                1rem !default;
+KESnav-link-font-size:                null !default;
+KESnav-link-font-weight:              null !default;
+KESnav-link-color:                    KESlink-color !default;
+KESnav-link-hover-color:              KESlink-hover-color !default;
+KESnav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
+KESnav-link-disabled-color:           KESgray-600 !default;
+
+KESnav-tabs-border-color:             KESgray-300 !default;
+KESnav-tabs-border-width:             KESborder-width !default;
+KESnav-tabs-border-radius:            KESborder-radius !default;
+KESnav-tabs-link-hover-border-color:  KESgray-200 KESgray-200 KESnav-tabs-border-color !default;
+KESnav-tabs-link-active-color:        KESgray-700 !default;
+KESnav-tabs-link-active-bg:           KESbody-bg !default;
+KESnav-tabs-link-active-border-color: KESgray-300 KESgray-300 KESnav-tabs-link-active-bg !default;
+
+KESnav-pills-border-radius:           KESborder-radius !default;
+KESnav-pills-link-active-color:       KEScomponent-active-color !default;
+KESnav-pills-link-active-bg:          KEScomponent-active-bg !default;
+// scss-docs-end nav-variables
+
+
+// Navbar
+
+// scss-docs-start navbar-variables
+KESnavbar-padding-y:                  KESspacer / 2 !default;
+KESnavbar-padding-x:                  null !default;
+
+KESnavbar-nav-link-padding-x:         .5rem !default;
+
+KESnavbar-brand-font-size:            KESfont-size-lg !default;
+// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
+KESnav-link-height:                   KESfont-size-base * KESline-height-base + KESnav-link-padding-y * 2 !default;
+KESnavbar-brand-height:               KESnavbar-brand-font-size * KESline-height-base !default;
+KESnavbar-brand-padding-y:            (KESnav-link-height - KESnavbar-brand-height) / 2 !default;
+KESnavbar-brand-margin-end:           1rem !default;
+
+KESnavbar-toggler-padding-y:          .25rem !default;
+KESnavbar-toggler-padding-x:          .75rem !default;
+KESnavbar-toggler-font-size:          KESfont-size-lg !default;
+KESnavbar-toggler-border-radius:      KESbtn-border-radius !default;
+KESnavbar-toggler-focus-width:        KESbtn-focus-width !default;
+KESnavbar-toggler-transition:         box-shadow .15s ease-in-out !default;
+// scss-docs-end navbar-variables
+
+// scss-docs-start navbar-theme-variables
+KESnavbar-dark-color:                 rgba(KESwhite, .55) !default;
+KESnavbar-dark-hover-color:           rgba(KESwhite, .75) !default;
+KESnavbar-dark-active-color:          KESwhite !default;
+KESnavbar-dark-disabled-color:        rgba(KESwhite, .25) !default;
+KESnavbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{KESnavbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+KESnavbar-dark-toggler-border-color:  rgba(KESwhite, .1) !default;
+
+KESnavbar-light-color:                rgba(KESblack, .55) !default;
+KESnavbar-light-hover-color:          rgba(KESblack, .7) !default;
+KESnavbar-light-active-color:         rgba(KESblack, .9) !default;
+KESnavbar-light-disabled-color:       rgba(KESblack, .3) !default;
+KESnavbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{KESnavbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+KESnavbar-light-toggler-border-color: rgba(KESblack, .1) !default;
+
+KESnavbar-light-brand-color:                KESnavbar-light-active-color !default;
+KESnavbar-light-brand-hover-color:          KESnavbar-light-active-color !default;
+KESnavbar-dark-brand-color:                 KESnavbar-dark-active-color !default;
+KESnavbar-dark-brand-hover-color:           KESnavbar-dark-active-color !default;
+// scss-docs-end navbar-theme-variables
+
+
+// Dropdowns
+//
+// Dropdown menu container and contents.
+
+// scss-docs-start dropdown-variables
+KESdropdown-min-width:                10rem !default;
+KESdropdown-padding-x:                0 !default;
+KESdropdown-padding-y:                .5rem !default;
+KESdropdown-spacer:                   .125rem !default;
+KESdropdown-font-size:                KESfont-size-base !default;
+KESdropdown-color:                    KESbody-color !default;
+KESdropdown-bg:                       KESwhite !default;
+KESdropdown-border-color:             rgba(KESblack, .15) !default;
+KESdropdown-border-radius:            KESborder-radius !default;
+KESdropdown-border-width:             KESborder-width !default;
+KESdropdown-inner-border-radius:      subtract(KESdropdown-border-radius, KESdropdown-border-width) !default;
+KESdropdown-divider-bg:               KESdropdown-border-color !default;
+KESdropdown-divider-margin-y:         KESspacer / 2 !default;
+KESdropdown-box-shadow:               KESbox-shadow !default;
+
+KESdropdown-link-color:               KESgray-900 !default;
+KESdropdown-link-hover-color:         shade-color(KESgray-900, 10%) !default;
+KESdropdown-link-hover-bg:            KESgray-200 !default;
+
+KESdropdown-link-active-color:        KEScomponent-active-color !default;
+KESdropdown-link-active-bg:           KEScomponent-active-bg !default;
+
+KESdropdown-link-disabled-color:      KESgray-500 !default;
+
+KESdropdown-item-padding-y:           KESspacer / 4 !default;
+KESdropdown-item-padding-x:           KESspacer !default;
+
+KESdropdown-header-color:             KESgray-600 !default;
+KESdropdown-header-padding:           KESdropdown-padding-y KESdropdown-item-padding-x !default;
+// scss-docs-end dropdown-variables
+
+// scss-docs-start dropdown-dark-variables
+KESdropdown-dark-color:               KESgray-300 !default;
+KESdropdown-dark-bg:                  KESgray-800 !default;
+KESdropdown-dark-border-color:        KESdropdown-border-color !default;
+KESdropdown-dark-divider-bg:          KESdropdown-divider-bg !default;
+KESdropdown-dark-box-shadow:          null !default;
+KESdropdown-dark-link-color:          KESdropdown-dark-color !default;
+KESdropdown-dark-link-hover-color:    KESwhite !default;
+KESdropdown-dark-link-hover-bg:       rgba(KESwhite, .15) !default;
+KESdropdown-dark-link-active-color:   KESdropdown-link-active-color !default;
+KESdropdown-dark-link-active-bg:      KESdropdown-link-active-bg !default;
+KESdropdown-dark-link-disabled-color: KESgray-500 !default;
+KESdropdown-dark-header-color:        KESgray-500 !default;
+// scss-docs-end dropdown-dark-variables
+
+
+// Pagination
+
+// scss-docs-start pagination-variables
+KESpagination-padding-y:              .375rem !default;
+KESpagination-padding-x:              .75rem !default;
+KESpagination-padding-y-sm:           .25rem !default;
+KESpagination-padding-x-sm:           .5rem !default;
+KESpagination-padding-y-lg:           .75rem !default;
+KESpagination-padding-x-lg:           1.5rem !default;
+
+KESpagination-color:                  KESlink-color !default;
+KESpagination-bg:                     KESwhite !default;
+KESpagination-border-width:           KESborder-width !default;
+KESpagination-border-radius:          KESborder-radius !default;
+KESpagination-margin-start:           -KESpagination-border-width !default;
+KESpagination-border-color:           KESgray-300 !default;
+
+KESpagination-focus-color:            KESlink-hover-color !default;
+KESpagination-focus-bg:               KESgray-200 !default;
+KESpagination-focus-box-shadow:       KESinput-btn-focus-box-shadow !default;
+KESpagination-focus-outline:          0 !default;
+
+KESpagination-hover-color:            KESlink-hover-color !default;
+KESpagination-hover-bg:               KESgray-200 !default;
+KESpagination-hover-border-color:     KESgray-300 !default;
+
+KESpagination-active-color:           KEScomponent-active-color !default;
+KESpagination-active-bg:              KEScomponent-active-bg !default;
+KESpagination-active-border-color:    KESpagination-active-bg !default;
+
+KESpagination-disabled-color:         KESgray-600 !default;
+KESpagination-disabled-bg:            KESwhite !default;
+KESpagination-disabled-border-color:  KESgray-300 !default;
+
+KESpagination-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
+KESpagination-border-radius-sm:       KESborder-radius-sm !default;
+KESpagination-border-radius-lg:       KESborder-radius-lg !default;
+// scss-docs-end pagination-variables
+
+
+// Cards
+
+// scss-docs-start card-variables
+KEScard-spacer-y:                     KESspacer !default;
+KEScard-spacer-x:                     KESspacer !default;
+KEScard-title-spacer-y:               KESspacer / 2 !default;
+KEScard-border-width:                 KESborder-width !default;
+KEScard-border-radius:                KESborder-radius !default;
+KEScard-border-color:                 rgba(KESblack, .125) !default;
+KEScard-inner-border-radius:          subtract(KEScard-border-radius, KEScard-border-width) !default;
+KEScard-cap-padding-y:                KEScard-spacer-y / 2 !default;
+KEScard-cap-padding-x:                KEScard-spacer-x !default;
+KEScard-cap-bg:                       rgba(KESblack, .03) !default;
+KEScard-cap-color:                    null !default;
+KEScard-height:                       null !default;
+KEScard-color:                        null !default;
+KEScard-bg:                           KESwhite !default;
+KEScard-img-overlay-padding:          KESspacer !default;
+KEScard-group-margin:                 KESgrid-gutter-width / 2 !default;
+// scss-docs-end card-variables
+
+// Accordion
+
+// scss-docs-start accordion-variables
+KESaccordion-padding-y:                     1rem !default;
+KESaccordion-padding-x:                     1.25rem !default;
+KESaccordion-color:                         KESbody-color !default;
+KESaccordion-bg:                            KESbody-bg !default;
+KESaccordion-border-width:                  KESborder-width !default;
+KESaccordion-border-color:                  rgba(KESblack, .125) !default;
+KESaccordion-border-radius:                 KESborder-radius !default;
+KESaccordion-inner-border-radius:           subtract(KESaccordion-border-radius, KESaccordion-border-width) !default;
+
+KESaccordion-body-padding-y:                KESaccordion-padding-y !default;
+KESaccordion-body-padding-x:                KESaccordion-padding-x !default;
+
+KESaccordion-button-padding-y:              KESaccordion-padding-y !default;
+KESaccordion-button-padding-x:              KESaccordion-padding-x !default;
+KESaccordion-button-color:                  KESaccordion-color !default;
+KESaccordion-button-bg:                     KESaccordion-bg !default;
+KESaccordion-transition:                    KESbtn-transition, border-radius .15s ease !default;
+KESaccordion-button-active-bg:              tint-color(KEScomponent-active-bg, 90%) !default;
+KESaccordion-button-active-color:           shade-color(KESprimary, 10%) !default;
+
+KESaccordion-button-focus-border-color:     KESinput-focus-border-color !default;
+KESaccordion-button-focus-box-shadow:       KESbtn-focus-box-shadow !default;
+
+KESaccordion-icon-width:                    1.25rem !default;
+KESaccordion-icon-color:                    KESaccordion-color !default;
+KESaccordion-icon-active-color:             KESaccordion-button-active-color !default;
+KESaccordion-icon-transition:               transform .2s ease-in-out !default;
+KESaccordion-icon-transform:                rotate(-180deg) !default;
+
+KESaccordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{KESaccordion-icon-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+KESaccordion-button-active-icon:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{KESaccordion-icon-active-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+// scss-docs-end accordion-variables
+
+// Tooltips
+
+// scss-docs-start tooltip-variables
+KEStooltip-font-size:                 KESfont-size-sm !default;
+KEStooltip-max-width:                 200px !default;
+KEStooltip-color:                     KESwhite !default;
+KEStooltip-bg:                        KESblack !default;
+KEStooltip-border-radius:             KESborder-radius !default;
+KEStooltip-opacity:                   .9 !default;
+KEStooltip-padding-y:                 KESspacer / 4 !default;
+KEStooltip-padding-x:                 KESspacer / 2 !default;
+KEStooltip-margin:                    0 !default;
+
+KEStooltip-arrow-width:               .8rem !default;
+KEStooltip-arrow-height:              .4rem !default;
+KEStooltip-arrow-color:               KEStooltip-bg !default;
+// scss-docs-end tooltip-variables
+
+// Form tooltips must come after regular tooltips
+// scss-docs-start tooltip-feedback-variables
+KESform-feedback-tooltip-padding-y:     KEStooltip-padding-y !default;
+KESform-feedback-tooltip-padding-x:     KEStooltip-padding-x !default;
+KESform-feedback-tooltip-font-size:     KEStooltip-font-size !default;
+KESform-feedback-tooltip-line-height:   null !default;
+KESform-feedback-tooltip-opacity:       KEStooltip-opacity !default;
+KESform-feedback-tooltip-border-radius: KEStooltip-border-radius !default;
+// scss-docs-start tooltip-feedback-variables
+
+
+// Popovers
+
+// scss-docs-start popover-variables
+KESpopover-font-size:                 KESfont-size-sm !default;
+KESpopover-bg:                        KESwhite !default;
+KESpopover-max-width:                 276px !default;
+KESpopover-border-width:              KESborder-width !default;
+KESpopover-border-color:              rgba(KESblack, .2) !default;
+KESpopover-border-radius:             KESborder-radius-lg !default;
+KESpopover-inner-border-radius:       subtract(KESpopover-border-radius, KESpopover-border-width) !default;
+KESpopover-box-shadow:                KESbox-shadow !default;
+
+KESpopover-header-bg:                 shade-color(KESpopover-bg, 6%) !default;
+KESpopover-header-color:              KESheadings-color !default;
+KESpopover-header-padding-y:          .5rem !default;
+KESpopover-header-padding-x:          KESspacer !default;
+
+KESpopover-body-color:                KESbody-color !default;
+KESpopover-body-padding-y:            KESspacer !default;
+KESpopover-body-padding-x:            KESspacer !default;
+
+KESpopover-arrow-width:               1rem !default;
+KESpopover-arrow-height:              .5rem !default;
+KESpopover-arrow-color:               KESpopover-bg !default;
+
+KESpopover-arrow-outer-color:         fade-in(KESpopover-border-color, .05) !default;
+// scss-docs-end popover-variables
+
+
+// Toasts
+
+// scss-docs-start toast-variables
+KEStoast-max-width:                   350px !default;
+KEStoast-padding-x:                   .75rem !default;
+KEStoast-padding-y:                   .5rem !default;
+KEStoast-font-size:                   .875rem !default;
+KEStoast-color:                       null !default;
+KEStoast-background-color:            rgba(KESwhite, .85) !default;
+KEStoast-border-width:                1px !default;
+KEStoast-border-color:                rgba(0, 0, 0, .1) !default;
+KEStoast-border-radius:               KESborder-radius !default;
+KEStoast-box-shadow:                  KESbox-shadow !default;
+KEStoast-spacing:                     KEScontainer-padding-x !default;
+
+KEStoast-header-color:                KESgray-600 !default;
+KEStoast-header-background-color:     rgba(KESwhite, .85) !default;
+KEStoast-header-border-color:         rgba(0, 0, 0, .05) !default;
+// scss-docs-end toast-variables
+
+
+// Badges
+
+// scss-docs-start badge-variables
+KESbadge-font-size:                   .75em !default;
+KESbadge-font-weight:                 KESfont-weight-bold !default;
+KESbadge-color:                       KESwhite !default;
+KESbadge-padding-y:                   .35em !default;
+KESbadge-padding-x:                   .65em !default;
+KESbadge-border-radius:               KESborder-radius !default;
+// scss-docs-end badge-variables
+
+
+// Modals
+
+// scss-docs-start modal-variables
+KESmodal-inner-padding:               KESspacer !default;
+
+KESmodal-footer-margin-between:       .5rem !default;
+
+KESmodal-dialog-margin:               .5rem !default;
+KESmodal-dialog-margin-y-sm-up:       1.75rem !default;
+
+KESmodal-title-line-height:           KESline-height-base !default;
+
+KESmodal-content-color:               null !default;
+KESmodal-content-bg:                  KESwhite !default;
+KESmodal-content-border-color:        rgba(KESblack, .2) !default;
+KESmodal-content-border-width:        KESborder-width !default;
+KESmodal-content-border-radius:       KESborder-radius-lg !default;
+KESmodal-content-inner-border-radius: subtract(KESmodal-content-border-radius, KESmodal-content-border-width) !default;
+KESmodal-content-box-shadow-xs:       KESbox-shadow-sm !default;
+KESmodal-content-box-shadow-sm-up:    KESbox-shadow !default;
+
+KESmodal-backdrop-bg:                 KESblack !default;
+KESmodal-backdrop-opacity:            .5 !default;
+KESmodal-header-border-color:         KESborder-color !default;
+KESmodal-footer-border-color:         KESmodal-header-border-color !default;
+KESmodal-header-border-width:         KESmodal-content-border-width !default;
+KESmodal-footer-border-width:         KESmodal-header-border-width !default;
+KESmodal-header-padding-y:            KESmodal-inner-padding !default;
+KESmodal-header-padding-x:            KESmodal-inner-padding !default;
+KESmodal-header-padding:              KESmodal-header-padding-y KESmodal-header-padding-x !default; // Keep this for backwards compatibility
+
+KESmodal-sm:                          300px !default;
+KESmodal-md:                          500px !default;
+KESmodal-lg:                          800px !default;
+KESmodal-xl:                          1140px !default;
+
+KESmodal-fade-transform:              translate(0, -50px) !default;
+KESmodal-show-transform:              none !default;
+KESmodal-transition:                  transform .3s ease-out !default;
+KESmodal-scale-transform:             scale(1.02) !default;
+// scss-docs-end modal-variables
+
+
+// Alerts
+//
+// Define alert colors, border radius, and padding.
+
+// scss-docs-start alert-variables
+KESalert-padding-y:               KESspacer !default;
+KESalert-padding-x:               KESspacer !default;
+KESalert-margin-bottom:           1rem !default;
+KESalert-border-radius:           KESborder-radius !default;
+KESalert-link-font-weight:        KESfont-weight-bold !default;
+KESalert-border-width:            KESborder-width !default;
+KESalert-bg-scale:                -80% !default;
+KESalert-border-scale:            -70% !default;
+KESalert-color-scale:             40% !default;
+KESalert-dismissible-padding-r:   KESalert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
+// scss-docs-end alert-variables
+
+
+// Progress bars
+
+// scss-docs-start progress-variables
+KESprogress-height:                   1rem !default;
+KESprogress-font-size:                KESfont-size-base * .75 !default;
+KESprogress-bg:                       KESgray-200 !default;
+KESprogress-border-radius:            KESborder-radius !default;
+KESprogress-box-shadow:               KESbox-shadow-inset !default;
+KESprogress-bar-color:                KESwhite !default;
+KESprogress-bar-bg:                   KESprimary !default;
+KESprogress-bar-animation-timing:     1s linear infinite !default;
+KESprogress-bar-transition:           width .6s ease !default;
+// scss-docs-end progress-variables
+
+
+// List group
+
+// scss-docs-start list-group-variables
+KESlist-group-color:                  KESgray-900 !default;
+KESlist-group-bg:                     KESwhite !default;
+KESlist-group-border-color:           rgba(KESblack, .125) !default;
+KESlist-group-border-width:           KESborder-width !default;
+KESlist-group-border-radius:          KESborder-radius !default;
+
+KESlist-group-item-padding-y:         KESspacer / 2 !default;
+KESlist-group-item-padding-x:         KESspacer !default;
+KESlist-group-item-bg-scale:          -80% !default;
+KESlist-group-item-color-scale:       40% !default;
+
+KESlist-group-hover-bg:               KESgray-100 !default;
+KESlist-group-active-color:           KEScomponent-active-color !default;
+KESlist-group-active-bg:              KEScomponent-active-bg !default;
+KESlist-group-active-border-color:    KESlist-group-active-bg !default;
+
+KESlist-group-disabled-color:         KESgray-600 !default;
+KESlist-group-disabled-bg:            KESlist-group-bg !default;
+
+KESlist-group-action-color:           KESgray-700 !default;
+KESlist-group-action-hover-color:     KESlist-group-action-color !default;
+
+KESlist-group-action-active-color:    KESbody-color !default;
+KESlist-group-action-active-bg:       KESgray-200 !default;
+// scss-docs-end list-group-variables
+
+
+// Image thumbnails
+
+// scss-docs-start thumbnail-variables
+KESthumbnail-padding:                 .25rem !default;
+KESthumbnail-bg:                      KESbody-bg !default;
+KESthumbnail-border-width:            KESborder-width !default;
+KESthumbnail-border-color:            KESgray-300 !default;
+KESthumbnail-border-radius:           KESborder-radius !default;
+KESthumbnail-box-shadow:              KESbox-shadow-sm !default;
+// scss-docs-end thumbnail-variables
+
+
+// Figures
+
+// scss-docs-start figure-variables
+KESfigure-caption-font-size:          KESsmall-font-size !default;
+KESfigure-caption-color:              KESgray-600 !default;
+// scss-docs-end figure-variables
+
+
+// Breadcrumbs
+
+// scss-docs-start breadcrumb-variables
+KESbreadcrumb-font-size:              null !default;
+KESbreadcrumb-padding-y:              0 !default;
+KESbreadcrumb-padding-x:              0 !default;
+KESbreadcrumb-item-padding-x:         .5rem !default;
+KESbreadcrumb-margin-bottom:          1rem !default;
+KESbreadcrumb-bg:                     null !default;
+KESbreadcrumb-divider-color:          KESgray-600 !default;
+KESbreadcrumb-active-color:           KESgray-600 !default;
+KESbreadcrumb-divider:                quote("/") !default;
+KESbreadcrumb-divider-flipped:        KESbreadcrumb-divider !default;
+KESbreadcrumb-border-radius:          null !default;
+// scss-docs-end breadcrumb-variables
+
+// Carousel
+
+// scss-docs-start carousel-variables
+KEScarousel-control-color:             KESwhite !default;
+KEScarousel-control-width:             15% !default;
+KEScarousel-control-opacity:           .5 !default;
+KEScarousel-control-hover-opacity:     .9 !default;
+KEScarousel-control-transition:        opacity .15s ease !default;
+
+KEScarousel-indicator-width:           30px !default;
+KEScarousel-indicator-height:          3px !default;
+KEScarousel-indicator-hit-area-height: 10px !default;
+KEScarousel-indicator-spacer:          3px !default;
+KEScarousel-indicator-opacity:         .5 !default;
+KEScarousel-indicator-active-bg:       KESwhite !default;
+KEScarousel-indicator-active-opacity:  1 !default;
+KEScarousel-indicator-transition:      opacity .6s ease !default;
+
+KEScarousel-caption-width:             70% !default;
+KEScarousel-caption-color:             KESwhite !default;
+KEScarousel-caption-padding-y:         1.25rem !default;
+KEScarousel-caption-spacer:            1.25rem !default;
+
+KEScarousel-control-icon-width:        2rem !default;
+
+KEScarousel-control-prev-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{KEScarousel-control-color}'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>") !default;
+KEScarousel-control-next-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{KEScarousel-control-color}'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/></svg>") !default;
+
+KEScarousel-transition-duration:       .6s !default;
+KEScarousel-transition:                transform KEScarousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
+
+KEScarousel-dark-indicator-active-bg:  KESblack !default;
+KEScarousel-dark-caption-color:        KESblack !default;
+KEScarousel-dark-control-icon-filter:  invert(1) grayscale(100) !default;
+// scss-docs-end carousel-variables
+
+
+// Spinners
+
+// scss-docs-start spinner-variables
+KESspinner-width:           2rem !default;
+KESspinner-height:          KESspinner-width !default;
+KESspinner-vertical-align:  -.125em !default;
+KESspinner-border-width:    .25em !default;
+KESspinner-animation-speed: .75s !default;
+
+KESspinner-width-sm:        1rem !default;
+KESspinner-height-sm:       KESspinner-width-sm !default;
+KESspinner-border-width-sm: .2em !default;
+// scss-docs-end spinner-variables
+
+
+// Close
+
+// scss-docs-start close-variables
+KESbtn-close-width:            1em !default;
+KESbtn-close-height:           KESbtn-close-width !default;
+KESbtn-close-padding-x:        .25em !default;
+KESbtn-close-padding-y:        KESbtn-close-padding-x !default;
+KESbtn-close-color:            KESblack !default;
+KESbtn-close-bg:               url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{KESbtn-close-color}'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>") !default;
+KESbtn-close-focus-shadow:     KESinput-btn-focus-box-shadow !default;
+KESbtn-close-opacity:          .5 !default;
+KESbtn-close-hover-opacity:    .75 !default;
+KESbtn-close-focus-opacity:    1 !default;
+KESbtn-close-disabled-opacity: .25 !default;
+KESbtn-close-white-filter:     invert(1) grayscale(100%) brightness(200%) !default;
+// scss-docs-end close-variables
+
+
+// Offcanvas
+
+// scss-docs-start offcanvas-variables
+KESoffcanvas-padding-y:               KESmodal-inner-padding !default;
+KESoffcanvas-padding-x:               KESmodal-inner-padding !default;
+KESoffcanvas-horizontal-width:        400px !default;
+KESoffcanvas-vertical-height:         30vh !default;
+KESoffcanvas-transition-duration:     .3s !default;
+KESoffcanvas-border-color:            KESmodal-content-border-color !default;
+KESoffcanvas-border-width:            KESmodal-content-border-width !default;
+KESoffcanvas-title-line-height:       KESmodal-title-line-height !default;
+KESoffcanvas-bg-color:                KESmodal-content-bg !default;
+KESoffcanvas-color:                   KESmodal-content-color !default;
+KESoffcanvas-box-shadow:              KESmodal-content-box-shadow-xs !default;
+// scss-docs-end offcanvas-variables
+
+// Code
+
+KEScode-font-size:                    KESsmall-font-size !default;
+KEScode-color:                        KESpink !default;
+
+KESkbd-padding-y:                     .2rem !default;
+KESkbd-padding-x:                     .4rem !default;
+KESkbd-font-size:                     KEScode-font-size !default;
+KESkbd-color:                         KESwhite !default;
+KESkbd-bg:                            KESgray-900 !default;
+
+KESpre-color:                         null !default;

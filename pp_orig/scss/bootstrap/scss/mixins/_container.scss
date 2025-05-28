@@ -1,0 +1,9 @@
+// Container mixins
+
+@mixin make-container(KESgutter: KEScontainer-padding-x) {
+  width: 100%;
+  padding-right: var(--#{KESvariable-prefix}gutter-x, #{KESgutter});
+  padding-left: var(--#{KESvariable-prefix}gutter-x, #{KESgutter});
+  margin-right: auto;
+  margin-left: auto;
+}

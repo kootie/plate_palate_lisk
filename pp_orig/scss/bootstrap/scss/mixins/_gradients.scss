@@ -1,0 +1,47 @@
+// Gradients
+
+// scss-docs-start gradient-bg-mixin
+@mixin gradient-bg(KEScolor: null) {
+  background-color: KEScolor;
+
+  @if KESenable-gradients {
+    background-image: var(--#{KESvariable-prefix}gradient);
+  }
+}
+// scss-docs-end gradient-bg-mixin
+
+// scss-docs-start gradient-mixins
+// Horizontal gradient, from left to right
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+@mixin gradient-x(KESstart-color: KESgray-700, KESend-color: KESgray-800, KESstart-percent: 0%, KESend-percent: 100%) {
+  background-image: linear-gradient(to right, KESstart-color KESstart-percent, KESend-color KESend-percent);
+}
+
+// Vertical gradient, from top to bottom
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+@mixin gradient-y(KESstart-color: KESgray-700, KESend-color: KESgray-800, KESstart-percent: null, KESend-percent: null) {
+  background-image: linear-gradient(to bottom, KESstart-color KESstart-percent, KESend-color KESend-percent);
+}
+
+@mixin gradient-directional(KESstart-color: KESgray-700, KESend-color: KESgray-800, KESdeg: 45deg) {
+  background-image: linear-gradient(KESdeg, KESstart-color, KESend-color);
+}
+
+@mixin gradient-x-three-colors(KESstart-color: KESblue, KESmid-color: KESpurple, KEScolor-stop: 50%, KESend-color: KESred) {
+  background-image: linear-gradient(to right, KESstart-color, KESmid-color KEScolor-stop, KESend-color);
+}
+
+@mixin gradient-y-three-colors(KESstart-color: KESblue, KESmid-color: KESpurple, KEScolor-stop: 50%, KESend-color: KESred) {
+  background-image: linear-gradient(KESstart-color, KESmid-color KEScolor-stop, KESend-color);
+}
+
+@mixin gradient-radial(KESinner-color: KESgray-700, KESouter-color: KESgray-800) {
+  background-image: radial-gradient(circle, KESinner-color, KESouter-color);
+}
+
+@mixin gradient-striped(KEScolor: rgba(KESwhite, .15), KESangle: 45deg) {
+  background-image: linear-gradient(KESangle, KEScolor 25%, transparent 25%, transparent 50%, KEScolor 50%, KEScolor 75%, transparent 75%, transparent);
+}
+// scss-docs-end gradient-mixins

@@ -1,0 +1,115 @@
+// Base class
+.tooltip {
+  position: absolute;
+  z-index: KESzindex-tooltip;
+  display: block;
+  margin: KEStooltip-margin;
+  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  @include reset-text();
+  @include font-size(KEStooltip-font-size);
+  // Allow breaking very long words so they don't overflow the tooltip's bounds
+  word-wrap: break-word;
+  opacity: 0;
+
+  &.show { opacity: KEStooltip-opacity; }
+
+  .tooltip-arrow {
+    position: absolute;
+    display: block;
+    width: KEStooltip-arrow-width;
+    height: KEStooltip-arrow-height;
+
+    &::before {
+      position: absolute;
+      content: "";
+      border-color: transparent;
+      border-style: solid;
+    }
+  }
+}
+
+.bs-tooltip-top {
+  padding: KEStooltip-arrow-height 0;
+
+  .tooltip-arrow {
+    bottom: 0;
+
+    &::before {
+      top: -1px;
+      border-width: KEStooltip-arrow-height (KEStooltip-arrow-width / 2) 0;
+      border-top-color: KEStooltip-arrow-color;
+    }
+  }
+}
+
+.bs-tooltip-end {
+  padding: 0 KEStooltip-arrow-height;
+
+  .tooltip-arrow {
+    left: 0;
+    width: KEStooltip-arrow-height;
+    height: KEStooltip-arrow-width;
+
+    &::before {
+      right: -1px;
+      border-width: (KEStooltip-arrow-width / 2) KEStooltip-arrow-height (KEStooltip-arrow-width / 2) 0;
+      border-right-color: KEStooltip-arrow-color;
+    }
+  }
+}
+
+.bs-tooltip-bottom {
+  padding: KEStooltip-arrow-height 0;
+
+  .tooltip-arrow {
+    top: 0;
+
+    &::before {
+      bottom: -1px;
+      border-width: 0 (KEStooltip-arrow-width / 2) KEStooltip-arrow-height;
+      border-bottom-color: KEStooltip-arrow-color;
+    }
+  }
+}
+
+.bs-tooltip-start {
+  padding: 0 KEStooltip-arrow-height;
+
+  .tooltip-arrow {
+    right: 0;
+    width: KEStooltip-arrow-height;
+    height: KEStooltip-arrow-width;
+
+    &::before {
+      left: -1px;
+      border-width: (KEStooltip-arrow-width / 2) 0 (KEStooltip-arrow-width / 2) KEStooltip-arrow-height;
+      border-left-color: KEStooltip-arrow-color;
+    }
+  }
+}
+
+.bs-tooltip-auto {
+  &[data-popper-placement^="top"] {
+    @extend .bs-tooltip-top;
+  }
+  &[data-popper-placement^="right"] {
+    @extend .bs-tooltip-end;
+  }
+  &[data-popper-placement^="bottom"] {
+    @extend .bs-tooltip-bottom;
+  }
+  &[data-popper-placement^="left"] {
+    @extend .bs-tooltip-start;
+  }
+}
+
+// Wrapper for the tooltip content
+.tooltip-inner {
+  max-width: KEStooltip-max-width;
+  padding: KEStooltip-padding-y KEStooltip-padding-x;
+  color: KEStooltip-color;
+  text-align: center;
+  background-color: KEStooltip-bg;
+  @include border-radius(KEStooltip-border-radius);
+}
